@@ -89,9 +89,10 @@
                 </LinearLayout>
                 <ImageView
                     android:id="@+id/wexin"
+                    android:padding="@dimen/dp_2"
                     android:src="@mipmap/xuanzhong"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp" />
+                    android:layout_width="22dp"
+                    android:layout_height="22dp" />
             </LinearLayout>
             <View
                 android:layout_marginLeft="15dp"
@@ -131,9 +132,10 @@
                 </LinearLayout>
                 <ImageView
                     android:id="@+id/alipay"
+                    android:padding="@dimen/dp_2"
                     android:src="@mipmap/weixuan"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp" />
+                    android:layout_width="22dp"
+                    android:layout_height="22dp" />
             </LinearLayout>
             <View
                 android:background="#EEEEEE"

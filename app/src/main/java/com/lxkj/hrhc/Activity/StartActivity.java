@@ -17,6 +17,7 @@ import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
@@ -52,6 +53,7 @@ public class StartActivity extends AppCompatActivity {
     private Handler handler=new Handler();
     private Context context ;
     private ActionDialog actionDialog ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

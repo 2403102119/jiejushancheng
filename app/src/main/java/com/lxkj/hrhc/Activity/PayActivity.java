@@ -62,8 +62,6 @@ public class PayActivity extends BaseActivity implements View.OnClickListener{
         moeny = getIntent().getStringExtra("moeny");
         orderid = getIntent().getStringExtra("orderid");
         tv_money.setText(moeny);
-
-
     }
 
     @Override
@@ -195,6 +193,11 @@ public class PayActivity extends BaseActivity implements View.OnClickListener{
                 case 1:
                     if (isDetail) {
                         setResult(SQSP.CODE_REFRESH);
+
+                        Intent intent = new Intent(PayActivity.this, PayOkActivity.class);
+                        startActivity(intent);
+                        finish();
+
                         Log.i(TAG, "handleMessage: 执行方法");
                     } else {
                         ActionPopoverUtils utils = new ActionPopoverUtils(PayActivity.this);
@@ -212,9 +215,7 @@ public class PayActivity extends BaseActivity implements View.OnClickListener{
                             Intent intent = new Intent(PayActivity.this, PayOkActivity.class);
                             startActivity(intent);
                             finish();
-
                         }
-
                     }
                     break;
             }

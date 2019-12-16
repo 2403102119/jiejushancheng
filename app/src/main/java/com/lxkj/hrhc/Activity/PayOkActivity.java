@@ -15,7 +15,7 @@ import com.lxkj.hrhc.R;
  */
 public class PayOkActivity extends BaseActivity implements View.OnClickListener{
 
-  private TextView logout;
+    private TextView logout;
     @Override
     protected void initView(Bundle savedInstanceState) {
         setContainer(R.layout.activity_pay_ok);
@@ -39,6 +39,7 @@ public class PayOkActivity extends BaseActivity implements View.OnClickListener{
                 Intent intent = new Intent(PayOkActivity.this,OrderActivity.class);
                 intent.putExtra("position","0");
                 startActivity(intent);
+                finish();
                 break;
         }
     }
