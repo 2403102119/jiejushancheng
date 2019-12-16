@@ -1,0 +1,183 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.lxkj.hrhc"
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 3
+        versionName "1.0.2"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true //65536
+
+        ndk {
+            //设置支持的so库架构
+            abiFilters "armeabi"
+        }
+
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: "com.lxkj.hrhc",
+                //JPUSH_APPKEY : "47275b5acd4c682068088323", //JPush 上注册的包名对应的 Appkey.
+                JPUSH_APPKEY : "8e24a8e840ce3364c39f681f", //JPush 上注册的包名对应的 Appkey.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+        ]
+
+    }
+    /*关于签名*/
+    signingConfigs {
+        release {
+            keyAlias 'key0'
+            keyPassword '123456'
+            storeFile file('yongjin.jks')
+            storePassword '123456'
+        }
+        debug {
+            keyAlias 'key0'
+            keyPassword '123456'
+            storeFile file('yongjin.jks')
+            storePassword '123456'
+        }
+    }
+
+
+    buildTypes {
+        /* release {
+             minifyEnabled false
+             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+         }*/
+
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            buildConfigField "boolean", "USE_CANARY", "true"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            buildConfigField "boolean", "USE_CANARY", "false"
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //网络请求
+    implementation project(':okhttputils')
+    implementation project(':dialog')
+    implementation project(':flowlayout-lib')
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    //65536
+    implementation 'com.android.support:multidex:1.0.3'
+    //下拉刷新
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
+    implementation 'com.lxj:xpopup:1.8.8'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    //权限管理
+    annotationProcessor 'com.zhy:mpermission-compiler:1.0.0'
+    implementation 'com.zhy:mpermission-api:1.0.0'
+
+    //圆形头像
+    implementation 'com.makeramen:roundedimageview:2.2.1'
+
+    //加载图片
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
+    //图片选择
+    implementation 'com.github.lovetuzitong:MultiImageSelector:1.2'
+
+    //图片压缩
+    implementation 'top.zibin:Luban:1.1.8'
+
+    //Gson
+    implementation 'com.google.code.gson:gson:2.7'
+
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+
+    /*图片轮播3*/
+    implementation 'com.youth.banner:banner:1.4.10'
+
+    //eventBus
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
+    //自定义方框验证码输入框
+    implementation 'com.jyn.verificationcodeview:verificationcodeview:1.0.0'
+
+    //首页轮播图
+    implementation 'cn.bingoogolapple:bga-banner:2.2.4@aar'
+
+    //倒计时
+    implementation 'com.github.iwgang:countdownview:2.1.6'
+
+    //地图
+    implementation files('libs/AMap2DMap_5.2.0_AMapSearch_6.1.0_AMapLocation_4.2.0_20180809.jar')
+
+    //星星222
+    implementation 'me.zhanghai.android.materialratingbar:library:1.3.1'
+    //星星   暂时不用了
+    implementation 'com.iarcuschin:simpleratingbar:0.1.5'
+    //城市选择
+    implementation 'com.contrarywind:Android-PickerView:4.1.7'
+    //饺子视频播放器
+    compile 'cn.jzvd:jiaozivideoplayer:6.2.12'
+    compile 'com.github.addappcn:android-pickers:1.0.3'
+    implementation 'com.github.paradoxie:AutoVerticalTextview:0.1'  //上下滚动的消息
+    //下拉选择框
+    compile 'com.github.arcadefire:nice-spinner:1.3.1'
+    //扫一扫
+    implementation 'com.github.yuzhiqiang1993:zxing:2.2.8'
+//    compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+    implementation 'com.alibaba:fastjson:1.2.44'
+
+    //---------------其他时候添加------------
+    implementation files('libs/umeng-common-2.0.2.jar')
+    implementation files('libs/umeng-share-core-6.9.4.jar')
+    implementation files('libs/umeng-share-QQ-simplify-6.9.4.jar')
+    implementation files('libs/umeng-share-sina-simplify-6.9.4.jar')
+    implementation files('libs/umeng-share-wechat-simplify-6.9.4.jar')
+    implementation files('libs/umeng-sharetool-6.9.4.jar')
+    implementation files('libs/jpush-android-3.2.0.jar')
+    implementation files('libs/jcore-android-2.0.0.jar')
+
+    //---------------不提交----------
+    implementation 'com.github.paradoxie:AutoVerticalTextview:0.1'
+    //扫一扫
+    implementation 'com.github.yuzhiqiang1993:zxing:2.2.8'
+
+    //下拉选择框
+    compile 'com.github.arcadefire:nice-spinner:1.3.1'
+    implementation files('libs/AMap2DMap_5.2.0_AMapSearch_6.1.0_AMapLocation_4.2.0_20180809.jar')
+    //解析JSON
+    implementation 'com.alibaba:fastjson:1.2.44'
+    //版本更新
+    implementation 'com.allenliu.versionchecklib:library:2.1.9'
+    //应用内安装--强制更新
+    implementation 'com.qianwen:update-app:3.5.2'
+    implementation project(':beecloud')
+
+    compile 'com.iarcuschin:simpleratingbar:0.1.5'
+    implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
+
+    implementation 'com.zyp.cardview:cardview:1.0.1'
+}

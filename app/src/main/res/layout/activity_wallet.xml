@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="15dp"
+    android:background="@color/white"
+    tools:context="com.lxkj.hrhc.Activity.WalletActivity">
+   <LinearLayout
+       android:orientation="vertical"
+       android:background="@mipmap/di"
+       android:layout_width="match_parent"
+       android:layout_height="146dp">
+       <TextView
+           android:text="资产总金额(元）"
+           android:textSize="15sp"
+           android:layout_marginTop="17dp"
+           android:layout_marginLeft="28dp"
+           android:textColor="@color/white"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+       <TextView
+           android:id="@+id/tv_balance"
+           android:text="500.0"
+           android:textStyle="bold"
+           android:textColor="@color/white"
+           android:textSize="35sp"
+           android:gravity="center"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content" />
+       <LinearLayout
+           android:gravity="center"
+           android:orientation="horizontal"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <TextView
+               android:id="@+id/tv_alipay"
+               android:padding="5dp"
+               android:text="提现到支付宝"
+               android:textSize="14sp"
+               android:textColor="@color/white"
+               android:gravity="center"
+               android:layout_width="0dp"
+               android:layout_weight="1"
+               android:layout_height="wrap_content" />
+           <View
+               android:background="@color/white"
+               android:layout_width="1dp"
+               android:layout_height="19dp"/>
+           <TextView
+               android:id="@+id/tv_bank"
+               android:text="提现到银行卡"
+               android:textSize="14sp"
+               android:padding="5dp"
+               android:textColor="@color/white"
+               android:gravity="center"
+               android:layout_width="0dp"
+               android:layout_weight="1"
+               android:layout_height="wrap_content" />
+       </LinearLayout>
+   </LinearLayout>
+    <TextView
+        android:text="交易明细"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:layout_marginLeft="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/smart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.scwang.smartrefresh.layout.header.ClassicsHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </com.scwang.smartrefresh.layout.header.ClassicsHeader>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycle"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+</LinearLayout>

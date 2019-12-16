@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/im_icon"
+            android:src="@mipmap/jiushui"
+            android:layout_width="47dp"
+            android:layout_height="47dp"
+            android:layout_margin="2dp"
+            android:scaleType="fitCenter"/>
+        <TextView
+            android:id="@+id/tv_name"
+            android:text="生鲜蔬菜"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#1A1A1A"
+            android:layout_margin="2dp"
+            android:singleLine="true"
+            android:textSize="12dp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/selector_trans_divider"/>
+</LinearLayout>

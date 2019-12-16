@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:background="@color/white"
+    tools:context="com.lxkj.hrhc.Activity.IdeaActivity">
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="44dp">
+       <TextView
+           android:text="反馈类型"
+           android:textColor="@color/black"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/ll_feedback"
+            android:background="@drawable/biankuang10"
+            android:layout_marginLeft="5dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tv_type"
+                android:hint="请选择"
+                android:layout_marginLeft="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_marginRight="11dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/jiantou_xia"
+                android:layout_width="10dp"
+                android:layout_height="6dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <EditText
+        android:id="@+id/et_itea"
+        android:hint="请留下您宝贵的意见！"
+        android:gravity="top"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:padding="@dimen/dp_15"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/biankuang10"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+    <TextView
+        android:id="@+id/tv_login"
+        android:layout_width="287dp"
+        android:layout_height="44dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="62dp"
+        android:background="@drawable/biankuang3"
+        android:gravity="center"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+</LinearLayout>

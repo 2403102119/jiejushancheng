@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="18dp"
+    android:background="@color/white"
+    tools:context="com.lxkj.hrhc.Activity.Message_detaileActivity">
+  <TextView
+      android:id="@+id/tv_title"
+      android:textStyle="bold"
+      android:textColor="#333333"
+      android:textSize="20sp"
+      android:lineSpacingExtra="6dp"
+      android:text="平底锅就能做的乳酪面包，一咬就爆浆，爽翻了！"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
+  <TextView
+      android:id="@+id/tv_time"
+      android:textSize="12sp"
+      android:textColor="#999999"
+      android:layout_marginTop="12dp"
+      android:text="2017-01-01 12:30:25"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" />
+  <TextView
+      android:id="@+id/tv_context"
+      android:text="
+                            平底锅可是每家厨房都有的神器，不但可以烙饼、炒菜，还能做很多小甜品～之前小果儿给你们推过平底锅芒果班戟、抹茶千层、芝士蛋糕、铜锣烧...的做法，有小伙伴问了，平底锅能做面包吗？
+今天咱们就来分享一下只需一个平底锅就能搞定的爆浆乳酪面包，一口咬下去，香香甜甜的奶油奶酪爆出来，那滋味棒极了！没有烤箱也能做面包，厉害了我的锅～
+                        "
+      android:textSize="15sp"
+      android:textColor="#333333"
+      android:layout_marginTop="10dp"
+      android:lineSpacingExtra="10dp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" />
+</LinearLayout>

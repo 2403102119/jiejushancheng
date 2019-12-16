@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="#F6F6F6"
+    android:id="@+id/ll_sell"
+    android:layout_width="match_parent"
+    android:layout_height="47dp">
+
+   <View
+       android:id="@+id/view_green"
+       android:background="@color/view_color"
+       android:layout_width="4dp"
+       android:layout_height="14dp"/>
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/tv_type"
+            android:text="生鲜蔬菜"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

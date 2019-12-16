@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="separate">#EFEFEF</color>
+    <color name="white">#FFFFFE</color>
+    <color name="press">#cccccc</color>
+    <color name="red_them">#20D69F</color>
+    <color name="txt_orange0">#23B7AC</color>
+    <color name="txt_orange1">#73D242</color>
+    <color name="txt_orange2">#999</color>
+    <color name="red">#FF0000</color>
+    <color name="statusColor">#414141</color>
+    <color name="lineGrey">#efefef</color><!--efefef-->
+    <color name="kprogresshud_default_color">#60111111</color>
+    <color name="grey3">#333333</color>
+    <color name="color_1b9dff">#1EA0F6</color>
+    <color name="Qblue">#fff</color>
+    <color name="color_transparent">#00000000</color>
+    <color name="material_blue_500">#fff</color>
+    <color name="tv_color">#F32009</color>
+    <color name="view_color">#F6F6F6</color>
+
+    <color name="btn_gtay_light">#DBDBDB</color>
+    <color name="indicator">#B2B2B2</color>
+    <color name="txt_lv1">#999999</color>
+    <color name="txt_lv2">#666666</color>
+    <color name="txt_lv3">#4D4D4D</color>
+    <color name="txt_lv4">#333333</color>
+    <color name="txt_lv5">#292929</color>
+    <color name="txt_lv6">#1A1A1A</color>
+    <color name="txt_lv7">#000000</color>
+
+    <color name="bg_vipcenter">#AE914C</color>
+    <color name="rightTV">#23B7AC</color>
+    <color name="navpage">#FFE1E8EB</color>
+
+    <color name="tag_select_textcolor">#FFffffff</color>
+    <color name="black">#FF000000</color>
+    <color name="appColor">#FF20D69E</color>
+    <color name="mainColor">#E61B1B</color>
+    <color name="mainColor1">#FF4635</color>
+    <color name="mainColor2">#0992F2</color>
+    <color name="mainColor666">#666666</color>
+    <color name="divider">#6EC274</color>
+    <color name="biankg">#FFC5B5</color>
+
+
+    <color name="transparent">#00000000</color>
+    <color name="trantracent">#22000000</color>
+    <color name="trantracent_wode">#55000000</color>
+    <color name="deep_transparent">#bb000000</color>
+    <color name="grey_text_color_normal">#8A8A8A</color>
+    <color name="grey_line_bg">#E4E4E4</color>
+    <color name="original_border_color">#F18459</color>
+    <color name="grey_normal_bg">#EEEEEE</color>
+    <color name="txt_lva">#23B7AC</color>
+    <color name="line">#E6E6E6</color>
+    <color name="price">#EB2932</color>
+    <color name="lable_blue">#3DB0FD</color>
+    <color name="stroke">#cac7c7</color>
+    <color name="blue_text">#0c91f7</color>
+
+    <color name="color_them">#5eadb5</color>
+    <color name="color_text_b3">#b3b3b3</color>
+    <color name="color_divider">#eeeeee</color>
+    <color name="color_them_alpha">#995eadb5</color>
+    <color name="color_bg_f0f0">#f0f0f0</color>
+    <color name="text_color_black">#333</color>
+    <color name="lined8">#d8d8d8</color>
+    <color name="text_teem">#FF1C1C</color>
+
+
+    <color name="grey_666">#666</color>
+    <color name="grey_999">#999</color>
+    <color name="grey_333">#333</color>
+    <color name="one">#E72D2E</color>
+    <color name="two">#F18C46</color>
+    <color name="three">#661FBB</color>
+
+
+
+</resources>

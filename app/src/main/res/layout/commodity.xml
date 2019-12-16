@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/ll_sell"
+    android:background="#66000000">
+    <LinearLayout
+        android:id="@+id/ll_sell_item"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="220dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:paddingLeft="15dp"
+                android:layout_height="20dp">
+                <TextView
+                    android:id="@+id/tv_cancel"
+                    android:text="取消"
+                    android:padding="@dimen/dp_2"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:textColor="@color/red_them"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:paddingRight="15dp"
+                android:layout_height="20dp">
+                <TextView
+                    android:id="@+id/tv_enter"
+                    android:text="确定"
+                    android:visibility="gone"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:padding="@dimen/dp_2"
+                    android:textColor="@color/color_1b9dff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <View
+            android:background="#E5E5E5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/wheel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal">
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+
+</RelativeLayout>

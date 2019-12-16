@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="left"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <View
+            android:id="@+id/view"
+            android:visibility="visible"
+            android:background="@color/indicator"
+            android:layout_width="1dp"
+            android:layout_weight="1"
+            android:layout_height="0dp"/>
+        <View
+            android:id="@+id/view1"
+            android:background="@drawable/biankuang28"
+            android:layout_width="10dp"
+            android:layout_height="10dp"/>
+        <View
+            android:id="@+id/view3"
+            android:background="@color/indicator"
+            android:layout_width="1dp"
+            android:layout_weight="1"
+            android:layout_height="0dp"/>
+    </LinearLayout>
+
+
+    <!--换成你的View的位置-->
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:layout_marginRight="24dp"
+            android:lineSpacingMultiplier="1.2"
+            android:text="[深圳市] 快件已签收，感谢您！，期[深圳市] 快件已签收快件已签收快件已签收快件已签收快件已签收"
+            android:textColor="@color/indicator"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="24dp"
+            android:lineSpacingMultiplier="1.2"
+            android:text="2016-07-12  12 : 30"
+            android:textColor="@color/indicator"
+            android:textSize="14dp" />
+    </LinearLayout>
+</LinearLayout>

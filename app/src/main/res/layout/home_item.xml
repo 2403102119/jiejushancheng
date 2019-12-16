@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:background="@color/white"
+    android:layout_marginTop="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+       <LinearLayout
+           android:gravity="center"
+           android:paddingBottom="3dp"
+           android:background="@mipmap/juxingyinying"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content">
+           <com.makeramen.roundedimageview.RoundedImageView
+               android:id="@+id/im_logo"
+               android:layout_width="88dp"
+               android:layout_height="88dp"
+               android:layout_gravity="center_vertical"
+               android:scaleType="centerCrop"
+               android:src="@mipmap/yongjinzhongxin"
+               app:riv_corner_radius="5dp"
+               app:riv_oval="false" />
+       </LinearLayout>
+
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_title"
+                android:lines="2"
+                android:ellipsize="end"
+                android:textColor="@color/black"
+                android:text="红豆薏米粉  600g"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="¥ "
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_teem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_Price"
+                android:text="30.00"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_teem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="¥ "
+                android:visibility="gone"
+                android:layout_marginLeft="6dp"
+                android:textSize="10sp"
+                android:textColor="#B2B2B2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_oldPrice"
+                android:layout_marginLeft="6dp"
+                android:text="¥50.00"
+                android:textSize="12sp"
+                android:textColor="#B2B2B2"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_pepo"
+                android:text="200人付款"
+                android:textSize="10sp"
+                android:textColor="#B2B2B2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

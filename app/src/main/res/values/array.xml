@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="medal">
+        <item>编码</item>
+        <item>积分</item>
+        <item>关键字</item>
+    </string-array>
+
+    <string-array name="type">
+        <item>全部</item>
+        <item>美食</item>
+        <item>娱乐</item>
+    </string-array>
+
+
+    <string-array name="Country">
+        <item>86  中国</item>
+        <item>80  美国</item>
+        <item>73  法国</item>
+        <item>22  英国</item>
+        <item>03  中国香港</item>
+        <item>99  中国台北</item>
+        <item>55  加拿大</item>
+    </string-array>
+
+    <declare-styleable name="IndicatorView">
+        <attr name="indicatorColor" format="color"/>
+        <attr name="indicatorColorSelected" format="color"/>
+        <attr name="indicatorWidth" format="integer"/>
+        <attr name="gravity" format="integer"/>
+    </declare-styleable>
+
+
+    <array name="home_labels">
+        <item>美食</item>
+        <item>电影</item>
+        <item>酒店</item>
+        <item>休闲娱乐</item>
+        <item>自助餐</item>
+        <item>KTV</item>
+        <item>蛋糕甜点</item>
+        <item>旅游</item>
+        <item>购物</item>
+        <item>摄影写真</item>
+        <item>丽人</item>
+        <item>生活服务</item>
+        <item>门票</item>
+        <item>抽奖公益</item>
+        <item>今日新单</item>
+        <item>全部分类</item>
+    </array>
+
+    <array name="home_icon">
+        <item>@mipmap/jiushui</item>
+        <item>@mipmap/jiushui</item>
+        <item>@mipmap/jiushui</item>
+        <item>@mipmap/jiushui</item>
+        <item>@mipmap/jiushui</item>
+        <item>@mipmap/jiushui</item>
+        <item>@mipmap/jiushui</item>
+        <item>@mipmap/jiushui</item>
+        <item>@mipmap/jiushui</item>
+        <item>@mipmap/jiushui</item>
+        <item>@mipmap/jiushui</item>
+        <item>@mipmap/jiushui</item>
+        <item>@mipmap/jiushui</item>
+        <item>@mipmap/jiushui</item>
+        <item>@mipmap/jiushui</item>
+        <item>@mipmap/jiushui</item>
+    </array>
+
+</resources>

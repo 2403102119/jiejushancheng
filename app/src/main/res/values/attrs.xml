@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 自定义星星属性 -->
+    <declare-styleable name="star">
+        //星星数量
+        <attr name="starsNum" format="integer"></attr>
+        //星星宽度
+        <attr name="starWidth" format="dimension"></attr>
+        //星星高度
+        <attr name="starHeight" format="dimension"></attr>
+        //星星间距
+        <attr name="starDistance" format="dimension"></attr>
+        //星星背景
+        <attr name="starBackground" format="reference"></attr>
+        //星星变化背景
+        <attr name="starDrawBackground" format="reference"></attr>
+        //控件是否可以点击
+        <attr name="starClickable" format="boolean"></attr>
+
+    </declare-styleable>
+
+
+    <!--自定义购物车加减数量-->
+    <declare-styleable name="AmountView2">
+        <!-- 左右2边+-按钮的宽度 -->
+        <attr name="btnWidth" format="dimension" />
+        <!-- 中间TextView的宽度 -->
+        <attr name="tvWidth" format="dimension" />
+        <!--<attr name="tvColor" format="color"/>-->
+        <attr name="tvTextSize" format="dimension" />
+        <attr name="btnTextSize" format="dimension" />
+    </declare-styleable>
+
+
+    <declare-styleable name="CustomProgressBar">
+        <attr name="progressColor" format="color" />
+        <attr name="progressDescColor" format="color" />
+        <attr name="progressRadius" format="dimension" />
+        <attr name="max" format="integer" />
+        <attr name="progress" format="integer" />
+        <attr name="borderWidth" format="dimension" />
+        <attr name="progressDesc" format="string" />
+        <attr name="isShowDesc" format="boolean" />
+    </declare-styleable>
+
+    <!--自定义密码输入框-->
+    <!--<declare-styleable name="PayPsdInputView">
+
+        <attr name="maxCount" format="integer" />
+        <attr name="circleColor" format="color" />
+        <attr name="bottomLineColor" format="color" />
+        <attr name="radius" format="dimension" />
+        <attr name="divideLineWidth" format="dimension" />
+        <attr name="divideLineColor" format="color" />
+        <attr name="rectAngle" format="dimension" />
+        <attr name="focusedColor" format="color" />
+        <attr name="psdType" format="enum">
+            <enum name="weChat" value="0" />
+            <enum name="bottomLine" value="1" />
+        </attr>
+    </declare-styleable>-->
+
+
+    <!--自定义密码输入框-->
+
+
+    <!--自定义密码输入框 明文-->
+   <!-- <declare-styleable name="PayPsdInputViewMing">
+
+        <attr name="maxCount1" format="integer" />
+        <attr name="circleColor1" format="color" />
+        <attr name="bottomLineColor1" format="color" />
+        <attr name="radius1" format="dimension" />
+        <attr name="divideLineWidth1" format="dimension" />
+        <attr name="divideLineColor1" format="color" />
+        <attr name="rectAngle1" format="dimension" />
+        <attr name="focusedColor1" format="color" />
+        <attr name="psdType1" format="enum">
+            <enum name="weChat" value="0" />
+            <enum name="bottomLine" value="1" />
+        </attr>
+    </declare-styleable>-->
+
+
+    <!--自定义星星
+    https://www.jianshu.com/p/c2a13f6fdeea
+    -->
+    <declare-styleable name="ShadowContainer">
+        <attr name="containerShadowColor" format="color"/>
+        <attr name="containerShadowRadius" format="dimension"/>
+        <attr name="containerDeltaLength" format="dimension"/>
+        <attr name="containerCornerRadius" format="dimension"/>
+        <attr name="deltaX" format="dimension"/>
+        <attr name="deltaY" format="dimension"/>
+    </declare-styleable>
+
+
+
+
+</resources>
