@@ -130,6 +130,52 @@ public class ActionDialog extends Dialog {
         window.setLayout(WindowManager.LayoutParams.FILL_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
     }
 
+    public ActionDialog(Context context,String text) {
+        super(context, R.style.processDialog);
+        this.context = context;
+
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.dialog_copy, null);
+        dialog_title = view.findViewById(R.id.tv_title);
+        dialog_left = view.findViewById(R.id.dialog_action_cancle);
+        dialog_right = view.findViewById(R.id.dialog_action_confirm);
+        henXian = view.findViewById(R.id.henXian);
+        tv_context = view.findViewById(R.id.tv_context);
+
+        tv_context.setText(text);
+
+        dialog_left.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onActionClickListener!=null){
+                    onActionClickListener.onLeftClick();
+                }
+
+                dismiss();
+            }
+        });
+
+        dialog_right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onActionClickListener!=null){
+                    onActionClickListener.onRightClick();
+                }
+                dismiss();
+            }
+        });
+
+        this.setContentView(view);
+        this.setCancelable(false);
+        this.setCanceledOnTouchOutside(false);
+
+        Window window = this.getWindow();
+        window.setGravity(Gravity.CENTER);
+        //window.setWindowAnimations(R.style.actionDialog);
+        window.setLayout(WindowManager.LayoutParams.FILL_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+    }
+
+
     public ActionDialog(final Context context, String title, String text, String left, String right) {
         super(context, R.style.processDialog);
         this.context = context;

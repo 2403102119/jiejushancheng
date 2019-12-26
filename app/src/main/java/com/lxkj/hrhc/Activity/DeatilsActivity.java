@@ -2,6 +2,8 @@ package com.lxkj.hrhc.Activity;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
@@ -25,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -40,6 +43,7 @@ import com.lxkj.hrhc.Bean.Generater;
 import com.lxkj.hrhc.Bean.Param;
 import com.lxkj.hrhc.Bean.Productlistbean;
 import com.lxkj.hrhc.Bean.productcommentbean;
+import com.lxkj.hrhc.Bean.weixinbean;
 import com.lxkj.hrhc.Http.OkHttpHelper;
 import com.lxkj.hrhc.Http.ResultBean;
 import com.lxkj.hrhc.Http.SpotsCallBack;
@@ -51,6 +55,7 @@ import com.lxkj.hrhc.Utils.StringUtil;
 import com.lxkj.hrhc.Utils.StringUtil_li;
 import com.lxkj.hrhc.Utils.TellUtil;
 import com.lxkj.hrhc.Utils.ToastFactory;
+import com.lxkj.hrhc.View.ActionDialog;
 import com.lxkj.hrhc.View.ChoiceParameterDialog;
 import com.lxkj.hrhc.View.GlideImageLoader;
 import com.youth.banner.Banner;
@@ -69,6 +74,7 @@ import java.util.Map;
 import okhttp3.Response;
 
 import static com.hss01248.dialog.ScreenUtil.getWindowManager;
+import static com.lxkj.hrhc.App.context;
 
 /**
  * Created ：李迪迦
@@ -114,6 +120,7 @@ public class DeatilsActivity extends BaseActivity implements View.OnClickListene
     private String sorttype = "1";
     private TextView tv_time;
     private LinearLayout tv_quanwang;
+    private ActionDialog actionDialog;
 
 
     @Override
@@ -322,7 +329,8 @@ public class DeatilsActivity extends BaseActivity implements View.OnClickListene
                 finish();
                 break;
             case R.id.bottomView1://客服
-                callPhone();
+//                callPhone();
+                contactCustomer();
                 break;
 
 
@@ -504,6 +512,42 @@ public class DeatilsActivity extends BaseActivity implements View.OnClickListene
 
                 }
                 showToast(resultBean.getResultNote());
+            }
+
+            @Override
+            public void onError(Response response, int code, Exception e) {
+
+            }
+        });
+    }
+
+    //联系客服微信
+    private void contactCustomer() {
+        Map<String, String> params = new HashMap<>();
+        params.put("cmd", "contactCustomer");
+        OkHttpHelper.getInstance().post_json(mContext, NetClass.BASE_URL, params, new SpotsCallBack<weixinbean>(mContext) {
+            @Override
+            public void onSuccess(Response response, final weixinbean resultBean) {
+               actionDialog = new ActionDialog(mContext,resultBean.getWX());
+               actionDialog.setOnActionClickListener(new ActionDialog.OnActionClickListener() {
+                   @Override
+                   public void onLeftClick() {//一键复制
+                       ClipboardManager myClipboard = (ClipboardManager) context.getSystemService(CLIPBOARD_SERVICE);
+                       String text;
+                       text = resultBean.getWX();
+
+                        ClipData myClip = ClipData.newPlainText("text", text);
+                       myClipboard.setPrimaryClip(myClip);
+                       Toast.makeText(context, "复制成功", Toast.LENGTH_SHORT).show();
+                       actionDialog.dismiss();
+                   }
+
+                   @Override
+                   public void onRightClick() {//确定
+                       actionDialog.dismiss();
+                   }
+               });
+               actionDialog.show();
             }
 
             @Override
