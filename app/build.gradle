@@ -25,6 +25,10 @@ android {
                 JPUSH_APPKEY : "8e24a8e840ce3364c39f681f", //JPush 上注册的包名对应的 Appkey.
                 JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
         ]
+        compileOptions {
+            sourceCompatibility = '1.8'
+            targetCompatibility = '1.8'
+        }
 
     }
     /*关于签名*/
@@ -140,7 +144,7 @@ dependencies {
     //城市选择
     implementation 'com.contrarywind:Android-PickerView:4.1.7'
     //饺子视频播放器
-    compile 'cn.jzvd:jiaozivideoplayer:6.2.12'
+    compile 'cn.jzvd:jiaozivideoplayer:7.0.4'
     compile 'com.github.addappcn:android-pickers:1.0.3'
     implementation 'com.github.paradoxie:AutoVerticalTextview:0.1'  //上下滚动的消息
     //下拉选择框
@@ -180,4 +184,13 @@ dependencies {
     implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
 
     implementation 'com.zyp.cardview:cardview:1.0.1'
+
+
+    //自定义轮播视图
+    compile 'cn.ymex:banner:1.6.7'
+    //九宫格图片
+    compile 'com.lzy.widget:ninegridview:0.2.0'
+
+    //视频播放
+    compile 'com.github.xiaoyanger0825:NiceVieoPlayer:v2.2'
 }

@@ -54,6 +54,16 @@ public class Detailbean extends ResultBean {
         private String productName;
         private int sales;
         private String url;
+
+        public String getVideo() {
+            return video;
+        }
+
+        public void setVideo(String video) {
+            this.video = video;
+        }
+
+        private String video;
         private String content;
         private List<String> productImages;
         private List<SkuListBean> skuList;

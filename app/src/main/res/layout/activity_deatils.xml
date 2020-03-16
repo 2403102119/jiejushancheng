@@ -21,11 +21,20 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                    <com.youth.banner.Banner
+                    <cn.ymex.widget.banner.Banner
                         android:id="@+id/banner"
                         android:layout_width="match_parent"
-                        android:layout_height="300dp">
-                    </com.youth.banner.Banner>
+                        android:layout_height="240dip"
+                        android:background="#eeeeee"
+                        app:banner_auto_play="false"
+                        app:banner_interval="3000">
+                        <com.lxkj.jieju.View.TitleIndicatorLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="visible"
+                            android:layout_gravity="bottom"
+                            />
+                    </cn.ymex.widget.banner.Banner>
                     <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="match_parent"

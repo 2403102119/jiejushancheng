@@ -83,6 +83,7 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
                 }
                 Intent intent1 = new Intent(mContext,WriteActivity.class);
                 intent1.putExtra("phone",et_phone.getText().toString());
+                intent1.putExtra("type","0");
                 startActivity(intent1);
 
                 break;

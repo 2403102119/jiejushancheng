@@ -258,6 +258,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                      Intent intent3 = new Intent(LoginActivity.this,BindingActivity.class);
                      intent3.putExtra("loginType",loginType);
                      intent3.putExtra("openId",openId);
+                     intent3.putExtra("nickname",nickName);
+                     intent3.putExtra("usericon",userIcon);
                      startActivity(intent3);
                      Log.i(TAG, "onSuccess: "+openId);
                  }else {

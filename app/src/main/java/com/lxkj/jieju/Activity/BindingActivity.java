@@ -32,7 +32,7 @@ public class BindingActivity extends BaseActivity implements View.OnClickListene
 
     private TextView tv_login,faCode,tv_agreement;
     private EditText edit1,edit2,et_3,et_4,et_5;
-    private String loginType,openId,yzmcode;
+    private String loginType,openId,yzmcode,nickname,usericon;
     private String contentUrl;
     private static final String TAG = "BindingActivity";
     @Override
@@ -62,6 +62,8 @@ public class BindingActivity extends BaseActivity implements View.OnClickListene
 
         loginType = getIntent().getStringExtra("loginType");
         openId = getIntent().getStringExtra("openId");
+        nickname = getIntent().getStringExtra("nickname");
+        usericon = getIntent().getStringExtra("usericon");
         Log.i(TAG, "onSuccess: "+openId);
         serviceContent();
     }
@@ -82,7 +84,14 @@ public class BindingActivity extends BaseActivity implements View.OnClickListene
                     showToast("验证码不正确");
                     return;
                 }
-                bindPhone(loginType,openId,edit1.getText().toString());
+                Intent intent1 = new Intent(mContext,WriteActivity.class);
+                intent1.putExtra("phone",edit1.getText().toString());
+                intent1.putExtra("type","1");
+                intent1.putExtra("loginType",loginType);
+                intent1.putExtra("openId",openId);
+                intent1.putExtra("usericon",usericon);
+                intent1.putExtra("nickname",nickname);
+                startActivity(intent1);
                 break;
             case R.id.faCode:
                 if (StringUtil_li.isSpace(edit1.getText().toString())){
@@ -101,33 +110,7 @@ public class BindingActivity extends BaseActivity implements View.OnClickListene
     }
 
 
-    //绑定手机号
-    private void bindPhone(String loginType,String openId,String phone) {
-        Map<String, String> params = new HashMap<>();
-        params.put("cmd","bindPhone");
-        params.put("loginType", loginType);
-        params.put("openId", openId);
-        params.put("phone", phone);
-        OkHttpHelper.getInstance().post_json(mContext, NetClass.BASE_URL, params, new SpotsCallBack<BindingBean>(mContext) {
-            @Override
-            public void onSuccess(Response response, BindingBean resultBean) {
-                showToast(resultBean.getResultNote());
-                String uid = resultBean.getUid();
-                SPTool.addSessionMap(SQSP.uid, uid);
-                SPTool.addSessionMap(SQSP.isLogin, true);
-                App.login = true;
-                Intent intent = new Intent(BindingActivity.this,MainActivity.class);
-                startActivity(intent);
-            }
 
-            @Override
-            public void onError(Response response, int code, Exception e) {
-
-            }
-        });
-
-
-    }
     //验证手机号是否注册
     private void checkPhone(final String phone) {
         Map<String, String> params = new HashMap<>();

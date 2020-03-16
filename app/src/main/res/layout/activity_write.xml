@@ -1,109 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingLeft="44dp"
-    android:background="@color/white"
-    android:paddingRight="44dp"
     tools:context="com.lxkj.jieju.Activity.WriteActivity">
-    <TextView
-        android:text="信息填写"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="@color/grey3"
-        android:layout_marginTop="28.5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/im_touxiang"
-        android:src="@mipmap/ic_figure_head"
-        android:layout_marginTop="30dp"
-        android:layout_width="75dp"
-        android:layout_height="75dp" />
-    <TextView
-        android:text="用户名"
-        android:layout_marginTop="38dp"
-        android:textSize="14sp"
-        android:textColor="@color/grey3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <EditText
-        android:id="@+id/edit1"
+    <LinearLayout
+        android:paddingLeft="44dp"
+        android:background="@color/white"
+        android:paddingRight="44dp"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginTop="10dp"
-        android:background="@null"
-        android:gravity="center_vertical"
-        android:hint="请输入你的昵称"
-        android:textColorHint="#999999"
-        android:textSize="14sp" />
+        android:layout_height="match_parent">
+        <TextView
+            android:text="信息填写"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/grey3"
+            android:layout_marginTop="28.5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/im_touxiang"
+            android:src="@mipmap/ic_figure_head"
+            android:layout_marginTop="30dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp" />
+        <TextView
+            android:text="用户名"
+            android:layout_marginTop="38dp"
+            android:textSize="14sp"
+            android:textColor="@color/grey3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/edit1"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="请输入你的昵称"
+            android:textColorHint="#999999"
+            android:textSize="14sp" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="15dp"
-        android:background="#E5E5E5" />
-    <TextView
-        android:text="设置密码"
-        android:layout_marginTop="21dp"
-        android:textSize="14sp"
-        android:textColor="@color/grey3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <EditText
-        android:id="@+id/edit2"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginTop="10dp"
-        android:background="@null"
-        android:gravity="center_vertical"
-        android:hint="请设置你的密码"
-        android:inputType="textPassword"
-        android:textColorHint="#999999"
-        android:textSize="14sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="15dp"
+            android:background="#E5E5E5" />
+        <TextView
+            android:text="设置密码"
+            android:layout_marginTop="21dp"
+            android:textSize="14sp"
+            android:textColor="@color/grey3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/edit2"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="请设置你的密码"
+            android:inputType="textPassword"
+            android:textColorHint="#999999"
+            android:textSize="14sp" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="15dp"
-        android:background="#E5E5E5" />
-    <TextView
-        android:text="再次输入"
-        android:layout_marginTop="21dp"
-        android:textSize="14sp"
-        android:textColor="@color/grey3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <EditText
-        android:id="@+id/edit3"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginTop="10dp"
-        android:background="@null"
-        android:gravity="center_vertical"
-        android:hint="请再次输入你的密码"
-        android:inputType="textPassword"
-        android:textColorHint="#999999"
-        android:textSize="14sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="15dp"
+            android:background="#E5E5E5" />
+        <TextView
+            android:text="再次输入"
+            android:layout_marginTop="21dp"
+            android:textSize="14sp"
+            android:textColor="@color/grey3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/edit3"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="请再次输入你的密码"
+            android:inputType="textPassword"
+            android:textColorHint="#999999"
+            android:textSize="14sp" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="15dp"
-        android:background="#E5E5E5" />
-    <TextView
-        android:id="@+id/tv_enter"
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/biankuang3"
-        android:gravity="center"
-        android:text="确认"
-        android:textColor="@color/white"
-        android:textSize="16sp" />
-</LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="15dp"
+            android:background="#E5E5E5" />
+        <TextView
+            android:text="选择地址"
+            android:layout_marginTop="21dp"
+            android:textSize="14sp"
+            android:textColor="@color/grey3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_site"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:hint="请选择地址"
+            android:inputType="textPassword"
+            android:textColorHint="#999999"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="15dp"
+            android:background="#E5E5E5" />
+        <TextView
+            android:text="详细地址"
+            android:layout_marginTop="21dp"
+            android:textSize="14sp"
+            android:textColor="@color/grey3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/et_detail"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="请填写详细地址"
+            android:inputType="textPassword"
+            android:textColorHint="#999999"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="15dp"
+            android:background="#E5E5E5" />
+        <TextView
+            android:id="@+id/tv_enter"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/biankuang3"
+            android:gravity="center"
+            android:text="确认"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</ScrollView>

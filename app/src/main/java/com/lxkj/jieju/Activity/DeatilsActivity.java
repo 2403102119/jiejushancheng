@@ -17,7 +17,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
@@ -38,7 +40,9 @@ import com.lxj.xpopup.interfaces.OnSrcViewUpdateListener;
 import com.lxj.xpopup.interfaces.XPopupImageLoader;
 import com.lxkj.jieju.Adapter.Recycle_oneAdapter;
 import com.lxkj.jieju.Adapter.recommendProductAdapter;
+import com.lxkj.jieju.App;
 import com.lxkj.jieju.Base.BaseActivity;
+import com.lxkj.jieju.Bean.BannerBean;
 import com.lxkj.jieju.Bean.Detailbean;
 import com.lxkj.jieju.Bean.Param;
 import com.lxkj.jieju.Bean.productcommentbean;
@@ -51,6 +55,7 @@ import com.lxkj.jieju.Http.SpotsCallBack;
 import com.lxkj.jieju.R;
 import com.lxkj.jieju.SQSP;
 import com.lxkj.jieju.Uri.NetClass;
+import com.lxkj.jieju.Utils.PicassoUtil;
 import com.lxkj.jieju.Utils.SPTool;
 import com.lxkj.jieju.Utils.StringUtil;
 import com.lxkj.jieju.Utils.StringUtil_li;
@@ -59,6 +64,9 @@ import com.lxkj.jieju.Utils.ToastFactory;
 import com.lxkj.jieju.View.ActionDialog;
 import com.lxkj.jieju.View.ChoiceParameterDialog;
 import com.lxkj.jieju.View.GlideImageLoader;
+import com.lzy.ninegrid.ImageInfo;
+import com.lzy.ninegrid.preview.ImagePreviewActivity;
+import com.xiao.nicevideoplayer.TxVideoPlayerController;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -67,11 +75,16 @@ import com.zhy.m.permission.MPermissions;
 import com.zhy.m.permission.PermissionGrant;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.jzvd.JzvdStd;
+import cn.ymex.widget.banner.callback.BindViewCallBack;
+import cn.ymex.widget.banner.callback.CreateViewCallBack;
+import cn.ymex.widget.banner.callback.OnClickBannerListener;
 import okhttp3.Request;
 import okhttp3.Response;
 
@@ -84,7 +97,7 @@ import static com.lxkj.jieju.App.context;
  */
 public class DeatilsActivity extends BaseActivity implements View.OnClickListener {
 
-    private Banner banner;
+    private cn.ymex.widget.banner.Banner banner;
     List<String> BanString = new ArrayList<>();
     private RecyclerView recycle;
     StaggeredGridLayoutManager layoutManager;
@@ -109,6 +122,7 @@ public class DeatilsActivity extends BaseActivity implements View.OnClickListene
     private LinearLayout tv_quanwang;
     private ActionDialog actionDialog;
     private LinearLayout ll_xuanze;
+    ArrayList<ImageInfo> imageInfo = new ArrayList<>();
 
 
     @Override
@@ -420,6 +434,85 @@ public class DeatilsActivity extends BaseActivity implements View.OnClickListene
             return null;
         }
     }
+    private void setGoodsData(final Detailbean resultBean) {
+        List<BannerBean> bannerList = new ArrayList<>();
+
+        if (!StringUtil.isEmpty(resultBean.getProductDetail().getVideo())) {
+            BannerBean bannerBean = new BannerBean();
+            bannerBean.setVideoUrl(resultBean.getProductDetail().getVideo());
+            if (null != resultBean.getProductDetail().getProductImages() && resultBean.getProductDetail().getProductImages().size() > 0)
+                bannerBean.setUrl(resultBean.getProductDetail().getProductImages().get(0));
+            bannerList.add(bannerBean);
+        }
+        if (null != resultBean.getProductDetail().getProductImages()) {
+            for (int i = 0; i < resultBean.getProductDetail().getProductImages().size(); i++) {
+                BannerBean bannerBean = new BannerBean();
+                bannerBean.setUrl(resultBean.getProductDetail().getProductImages().get(i));
+                ImageInfo info = new ImageInfo();
+                info.setThumbnailUrl(resultBean.getProductDetail().getProductImages().get(i));
+                info.setBigImageUrl(resultBean.getProductDetail().getProductImages().get(i));
+                imageInfo.add(info);
+                bannerList.add(bannerBean);
+            }
+        }
+
+
+        banner  //创建布局
+                .createView(new CreateViewCallBack() {
+                    @Override
+                    public View createView(Context context, ViewGroup parent, int viewType) {
+                        View view = LayoutInflater.from(context).inflate(R.layout.custom_banner_page, null);
+
+                        return view;
+                    }
+                })
+                //布局处理
+                .bindView(new BindViewCallBack<View, BannerBean>() {
+
+                    @Override
+                    public void bindView(View view, BannerBean data, int position) {
+                        ImageView imageView = view.findViewById(R.id.iv_pic);
+                        JzvdStd mNiceVideoPlayer = view.findViewById(R.id.videoPlayer);
+                        PicassoUtil.setImag(mContext, data.getUrl(), imageView);
+                        if (!StringUtil.isEmpty(data.getVideoUrl())) {
+//                            mNiceVideoPlayer.setPlayerType(NiceVideoPlayer.TYPE_NATIVE); // or NiceVideoPlayer.TYPE_NATIVE
+//                            mNiceVideoPlayer.setPlayerType(NiceVideoPlayer.TYPE_IJK); // IjkPlayer or MediaPlayer
+                            String videoUrl = data.getVideoUrl();
+                            mNiceVideoPlayer.setUp(videoUrl, null);
+                            TxVideoPlayerController controller = new TxVideoPlayerController(mContext);
+                            controller.setTitle("");
+//        controller.setLenght(98000);
+                            PicassoUtil.setImag(mContext, data.getUrl(), controller.imageView());
+                            Glide.with(DeatilsActivity.this).load(data.getUrl()).into(mNiceVideoPlayer.thumbImageView);
+
+//                            mNiceVideoPlayer.setCon(controller);
+
+                        } else
+                            mNiceVideoPlayer.setVisibility(View.GONE);
+                    }
+
+                })
+                //点击事件
+                .setOnClickBannerListener(new OnClickBannerListener<View, BannerBean>() {
+
+                    @Override
+                    public void onClickBanner(View view, BannerBean data, int position) {
+                        Intent intent = new Intent(mContext, ImagePreviewActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable(ImagePreviewActivity.IMAGE_INFO, (Serializable) imageInfo);
+                        if (!StringUtil.isEmpty(resultBean.getProductDetail().getVideo()))
+                            bundle.putInt(ImagePreviewActivity.CURRENT_ITEM, position - 1);
+                        else
+                            bundle.putInt(ImagePreviewActivity.CURRENT_ITEM, position);
+                        intent.putExtras(bundle);
+                        mContext.startActivity(intent);
+                        ((Activity) mContext).overridePendingTransition(0, 0);
+                    }
+
+                })
+                //填充数据
+                .execute(bannerList);
+    }
 
     //商品详情
     private void productDetail(final String productid) {
@@ -434,19 +527,8 @@ public class DeatilsActivity extends BaseActivity implements View.OnClickListene
                 for (int i = 0; i <resultBean.getProductDetail().getProductImages().size() ; i++) {
                     BanString.add(resultBean.getProductDetail().getProductImages().get(i));
                 }
-                banner.setBannerStyle(BannerConfig.NUM_INDICATOR);
-                banner.setImageLoader(new GlideImageLoader());
-                banner.setBannerAnimation(Transformer.DepthPage);
-                banner.setIndicatorGravity(BannerConfig.CENTER);
-                banner.setDelayTime(4000);
-                banner.isAutoPlay(true);
-                banner.setIndicatorGravity(BannerConfig.CENTER);
-                banner.setImages(BanString).setOnBannerListener(new OnBannerListener() {
-                    @Override
-                    public void OnBannerClick(int position) {
-                        showImage(new ImageView(mContext), position);
-                    }
-                }).start();
+                setGoodsData(resultBean);
+
                 shoucang = resultBean.getProductDetail().getIsCollect();
                 if (shoucang.equals("0")){
                     im_shoucang.setImageResource(R.mipmap.shoucang);
