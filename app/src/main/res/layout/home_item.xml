@@ -49,8 +49,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
-                android:text="¥ "
-                android:textSize="11sp"
+                android:text="¥"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_teem"
                 android:layout_width="wrap_content"
@@ -72,16 +72,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/tv_oldPrice"
-                android:layout_marginLeft="6dp"
-                android:text="¥50.00"
-                android:textSize="12sp"
-                android:textColor="#B2B2B2"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content" />
-            <TextView
                 android:id="@+id/tv_pepo"
+                android:visibility="gone"
                 android:text="200人付款"
                 android:textSize="10sp"
                 android:textColor="#B2B2B2"

@@ -92,16 +92,26 @@
             android:background="#F6F6F6"
             android:layout_height="match_parent"
             android:layout_weight="1.5" />
-
-        <!--右侧小分类分类-->
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/RecyclerViewRight"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="0dp"
-            android:padding="5dp"
-            android:layout_height="match_parent"
-            android:layout_marginRight="@dimen/dp_5"
             android:layout_weight="4.5"
-            android:background="#fff" />
+            android:layout_height="match_parent">
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/im_dingbu"
+                android:src="@mipmap/pinpaiqingcang"
+                android:layout_width="match_parent"
+                android:layout_height="120dp" />
+            <!--右侧小分类分类-->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/RecyclerViewRight"
+                android:layout_width="match_parent"
+                android:padding="5dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/dp_5"
+
+                android:background="#fff" />
+        </LinearLayout>
 
 
     </LinearLayout>

@@ -6,7 +6,7 @@
     android:layout_marginLeft="3dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <com.lxkj.hrhc.View.RoundImageView
+    <com.lxkj.jieju.View.RoundImageView
         android:id="@+id/image1"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_140"

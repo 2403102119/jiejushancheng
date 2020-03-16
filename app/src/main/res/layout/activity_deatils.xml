@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:id="@+id/setting"
-    tools:context="com.lxkj.hrhc.Activity.DeatilsActivity">
+    tools:context="com.lxkj.jieju.Activity.DeatilsActivity">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -48,13 +48,14 @@
                                 android:id="@+id/tv_price"
                                 android:text="0.00"
                                 android:textStyle="bold"
-                                android:textSize="25sp"
+                                android:textSize="15sp"
                                 android:textColor="#FF0F0F"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                             <TextView
                                 android:id="@+id/tv_oldprice"
                                 android:text="￥0.00"
+                                android:visibility="invisible"
                                 android:textColor="#AAAAAA"
                                 android:textSize="13sp"
                                 android:layout_marginLeft="12.5dp"
@@ -71,6 +72,7 @@
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
                         <LinearLayout
+                            android:layout_marginTop="8.5dp"
                             android:gravity="center"
                             android:paddingLeft="15dp"
                             android:paddingRight="15dp"
@@ -82,6 +84,7 @@
                                 android:text=""
                                 android:layout_width="0dp"
                                 android:textSize="15sp"
+                                android:textStyle="bold"
                                 android:textIsSelectable="true"
                                 android:textColor="#333333"
                                 android:layout_weight="1"
@@ -96,6 +99,7 @@
                             android:layout_marginRight="15dp"
                             android:textColor="#333333"
                             android:textSize="14sp"
+                            android:visibility="gone"
                             android:layout_marginTop="10dp"
                             android:text=""
                             android:layout_width="wrap_content"
@@ -107,85 +111,36 @@
                         android:layout_width="match_parent"
                         android:layout_height="10dp"/>
                     <LinearLayout
+                        android:id="@+id/ll_xuanze"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
                         android:layout_width="match_parent"
                         android:layout_height="47dp">
-                       <LinearLayout
-                           android:gravity="center"
-                           android:orientation="horizontal"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content">
-                           <ImageView
-                               android:src="@mipmap/biaoshi"
-                               android:layout_width="15dp"
-                               android:layout_height="15dp" />
-                           <TextView
-                               android:text="包邮"
-                               android:textSize="14sp"
-                               android:layout_marginLeft="8.5dp"
-                               android:textColor="@color/black"
-                               android:layout_width="wrap_content"
-                               android:layout_height="wrap_content" />
-                       </LinearLayout>
-                        <LinearLayout
-                            android:gravity="center"
-                            android:layout_marginLeft="10dp"
-                            android:orientation="horizontal"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                            <ImageView
-                                android:src="@mipmap/biaoshi"
-                                android:layout_width="15dp"
-                                android:layout_height="15dp" />
-                            <TextView
-                                android:id="@+id/tv_time"
-                                android:text="24小时发货"
-                                android:layout_marginLeft="8.5dp"
-                                android:textSize="14sp"
-                                android:textColor="@color/black"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:gravity="center"
-                            android:layout_marginLeft="10dp"
-                            android:orientation="horizontal"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                            <ImageView
-                                android:src="@mipmap/biaoshi"
-                                android:layout_width="15dp"
-                                android:layout_height="15dp" />
-                            <TextView
-                                android:text="正品保障"
-                                android:textSize="14sp"
-                                android:layout_marginLeft="8.5dp"
-                                android:textColor="@color/black"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-                        </LinearLayout>
+
                         <LinearLayout
                             android:id="@+id/tv_quanwang"
                             android:gravity="center"
-                            android:visibility="gone"
                             android:layout_marginLeft="10dp"
                             android:orientation="horizontal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
-                            <ImageView
-                                android:src="@mipmap/biaoshi"
-                                android:layout_width="15dp"
-                                android:layout_height="15dp" />
                             <TextView
-                                android:text="全网独家"
+                                android:id="@+id/tv_guige"
+                                android:text="未选"
                                 android:textSize="14sp"
-                                android:layout_marginLeft="8.5dp"
-                                android:textColor="@color/black"
+                                android:textColor="@color/grey_666"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
+                            <View
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"/>
+                            <ImageView
+                                android:src="@mipmap/jiantou_youpiao"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -206,16 +161,17 @@
                             <TextView
                                 android:id="@+id/tv_detail"
                                 android:text="商品详情"
-                                android:gravity="center"
                                 android:padding="@dimen/dp_5"
                                 android:textSize="14sp"
-                                android:textColor="@color/red_them"
+                                android:layout_marginLeft="15dp"
+                                android:textColor="@color/grey3"
                                 android:layout_width="0dp"
                                 android:layout_weight="1"
                                 android:layout_height="wrap_content" />
                             <TextView
                                 android:id="@+id/tv_pinglun"
                                 android:text="买家评论"
+                                android:visibility="gone"
                                 android:gravity="center"
                                 android:padding="@dimen/dp_5"
                                 android:textSize="14sp"
@@ -236,6 +192,7 @@
                                 android:layout_height="2dp">
                                 <View
                                     android:id="@+id/view_detail"
+                                    android:visibility="gone"
                                     android:background="@color/red_them"
                                     android:layout_width="64.5dp"
                                     android:layout_height="2dp"/>
@@ -247,6 +204,7 @@
                                 android:layout_height="2dp">
                                 <View
                                     android:id="@+id/view_pinglun"
+                                    android:visibility="gone"
                                     android:background="@color/white"
                                     android:layout_width="64.5dp"
                                     android:layout_height="2dp"/>
@@ -256,44 +214,41 @@
                     </LinearLayout>
                     <WebView
                         android:id="@+id/webView"
-                        android:layout_marginBottom="60dp"
                         android:layout_marginTop="12dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:ignore="WebViewLayout" />
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <View
+                            android:layout_marginLeft="15dp"
+                            android:background="@color/red_them"
+                            android:layout_width="4dp"
+                            android:layout_height="17dp"/>
+                        <TextView
+                            android:text="为你推荐"
+                            android:layout_marginLeft="5dp"
+                            android:textStyle="bold"
+                            android:textSize="14sp"
+                            android:textColor="#333333"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
                        <android.support.v7.widget.RecyclerView
                            android:id="@+id/recycle"
                            android:paddingLeft="15dp"
                            android:paddingRight="15dp"
-                           android:visibility="gone"
+                           android:layout_marginTop="20dp"
                            android:layout_marginBottom="65dp"
                            android:layout_width="match_parent"
                            android:layout_height="match_parent">
                        </android.support.v7.widget.RecyclerView>
                 </LinearLayout>
             </android.support.v4.widget.NestedScrollView>
-        <RelativeLayout
-            android:id="@+id/rl_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <FrameLayout
-                android:id="@+id/fl_top"
-                android:paddingTop="23dp"
-                android:background="@color/transparent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/finishBack"
-                    android:layout_width="44dp"
-                    android:layout_height="44dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/dp_10"
-                    android:padding="@dimen/dp_10"
-                    android:src="@mipmap/fanhui_detail"
-                    android:visibility="visible" />
-            </FrameLayout>
-
-        </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/ll_on"
@@ -332,7 +287,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dp_0"
-                        android:text="客服"
+                        android:text="联系客服"
                         android:textColor="#8C8C8C"
                         android:textSize="@dimen/sp_11" />
 

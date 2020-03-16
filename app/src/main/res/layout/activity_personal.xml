@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context="com.lxkj.hrhc.Activity.PersonalActivity">
+    tools:context="com.lxkj.jieju.Activity.PersonalActivity">
   <LinearLayout
       android:paddingLeft="15dp"
       android:paddingRight="10dp"
@@ -71,11 +71,13 @@
             android:layout_height="11dp" />
     </LinearLayout>
     <View
+        android:visibility="gone"
         android:background="#F2F2F2"
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
     <LinearLayout
         android:id="@+id/ll_sex"
+        android:visibility="gone"
         android:padding="15dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_marginTop="@dimen/dp_20"
+    android:layout_marginTop="@dimen/dp_10"
     android:gravity="center_vertical"
     android:layout_height="wrap_content"
     android:background="@color/white"
@@ -10,7 +10,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_110"
-        android:layout_marginRight="@dimen/dp_10"
         android:background="@color/white"
         android:orientation="horizontal">
 
@@ -69,17 +68,17 @@
                      android:layout_width="match_parent"
                      android:layout_height="wrap_content">
                      <TextView
-                         android:id="@+id/tv2"
+                         android:id="@+id/tv3"
                          android:layout_width="0dp"
-                         android:layout_weight="1"
-                         android:layout_height="@dimen/dp_30"
-                         android:ellipsize="end"
+                         android:layout_height="match_parent"
+                         android:layout_centerVertical="true"
+                         android:layout_weight="3"
                          android:gravity="center_vertical"
-                         android:maxLines="1"
                          android:singleLine="true"
-                         android:text="规格: 20斤一箱"
-                         android:textColor="#999"
-                         android:textSize="@dimen/sp_12" />
+                         android:text="¥ 49.9"
+                         android:textColor="@color/mainColor"
+                         android:textSize="@dimen/sp_15" />
+
                      <TextView
                          android:id="@+id/tv_number"
                          android:text=""
@@ -89,21 +88,23 @@
                  </LinearLayout>
 
                 <LinearLayout
+                    android:gravity="center_vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:weightSum="6">
 
                     <TextView
-                        android:id="@+id/tv3"
+                        android:id="@+id/tv2"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_centerVertical="true"
                         android:layout_weight="3"
+                        android:layout_height="@dimen/dp_30"
+                        android:ellipsize="end"
                         android:gravity="center_vertical"
+                        android:maxLines="1"
                         android:singleLine="true"
-                        android:text="¥ 49.9"
-                        android:textColor="@color/mainColor"
-                        android:textSize="@dimen/sp_15" />
+                        android:text="规格: 20斤一箱"
+                        android:textColor="#999"
+                        android:textSize="@dimen/sp_12" />
 
 
                     <LinearLayout
@@ -111,26 +112,11 @@
                         android:layout_height="match_parent"
                         android:layout_weight="3"
                         android:orientation="horizontal">
-                        <!--<com.lx.whsq.view.AmountView2-->
-                        <!--android:id="@+id/number"-->
-                        <!--android:layout_width="@dimen/dp_60"-->
-                        <!--android:layout_height="30dp"-->
-                        <!--android:layout_alignParentRight="true"-->
-                        <!--android:layout_centerInParent="true"-->
-                        <!--android:layout_centerVertical="true"-->
-                        <!--android:layout_gravity="right"-->
-                        <!--android:layout_marginRight="15dp"-->
-                        <!--android:visibility="gone"-->
-                        <!--app:currentValue="5"-->
-                        <!--app:maxValue="99"-->
-                        <!--app:minValue="3"-->
-                        <!--app:textSize="10sp" />-->
-
-                        <com.lxkj.hrhc.View.AmountView2
+                        <com.lxkj.jieju.View.AmountView2
                             android:id="@+id/AmountView"
                             android:gravity="center"
-                            android:layout_width="wrap_content"
-                            android:layout_height="@dimen/dp_30"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:layout_alignParentRight="true"
                             android:layout_centerInParent="true"
                             android:layout_centerVertical="true"

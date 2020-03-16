@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context="com.lxkj.hrhc.Activity.AlipaywinActivity">
+    tools:context="com.lxkj.jieju.Activity.AlipaywinActivity">
    <LinearLayout
        android:background="#F2F2F2"
        android:gravity="center"

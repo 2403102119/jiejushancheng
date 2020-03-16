@@ -1,70 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <LinearLayout
-        android:layout_marginTop="14dp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
+    android:layout_marginRight="@dimen/dp_5"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:background="@mipmap/juxingyinying"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:paddingBottom="10dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/im_userIcon"
-            android:scaleType="fitXY"
-            android:src="@mipmap/yongjinzhongxin"
-            android:layout_width="41dp"
-            android:layout_height="41dp" />
         <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:orientation="vertical"
-            android:layout_marginLeft="15dp"
-            android:gravity="center_vertical"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/tv_nickName"
-                android:text=""
-                android:textColor="#333333"
-                android:textSize="14sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <com.iarcuschin.simpleratingbar.SimpleRatingBar
-                android:id="@+id/rb"
-                android:layout_width="wrap_content"
+            android:id="@+id/llView"
+            android:background="@drawable/biankuang4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/image1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_170"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="0dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/pinpaiqingcang"
+                app:riv_border_width="0dip"
+                app:riv_corner_radius_top_left="@dimen/dp_5"
+                app:riv_corner_radius_top_right="@dimen/dp_5"
+                app:riv_mutate_background="true"
+                app:riv_oval="false" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srb_starSize="11dp"
-                app:srb_isIndicator="true"
-                android:layout_marginTop="10dp"
-                app:srb_numberOfStars="5"
-                app:srb_rating="0"
-                app:srb_stepSize="1"
-                app:srb_drawBorderEnabled="false"
-                app:srb_starBackgroundColor="#c0c0c0"
-                app:srb_fillColor="@color/red_them"/>
+                android:layout_marginTop="@dimen/dp_13"
+                android:orientation="horizontal"
+                android:weightSum="7">
+
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:layout_weight="7"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:lines="2"
+                    android:text="南极人（NanJiren）竹炭记忆枕头枕芯 慢回弹太... "
+                    android:textColor="#000"
+                    android:textSize="@dimen/sp_14" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:layout_marginTop="@dimen/dp_1"
+                    android:text="¥ "
+                    android:textStyle="bold"
+                    android:textColor="#F03A17"
+                    android:textSize="@dimen/sp_11" />
+
+                <TextView
+                    android:id="@+id/tv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="999"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_teem"
+                    android:textSize="@dimen/sp_14" />
+
+                <TextView
+                    android:id="@+id/tv7"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_30"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:gravity="center_vertical|right"
+                    android:text="200人付款"
+                    android:textSize="10dp"
+                    android:textColor="#B2B2B2"/>
+
+            </LinearLayout>
         </LinearLayout>
-        <TextView
-            android:id="@+id/tv_adtime"
-            android:text=""
-            android:textColor="#666666"
-            android:textSize="10sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-    <TextView
-        android:id="@+id/tv_content"
-        android:layout_marginTop="16dp"
-        android:textSize="13sp"
-        android:layout_marginLeft="@dimen/dp_55"
-        android:textColor="#666666"
-        android:text=""
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycle"
-        android:layout_marginLeft="@dimen/dp_55"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
 
 </LinearLayout>

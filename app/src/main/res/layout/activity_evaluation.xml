@@ -1,29 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context="com.lxkj.hrhc.Activity.EvaluationActivity">
-    <com.scwang.smartrefresh.layout.SmartRefreshLayout
-        android:id="@+id/smart"
+    android:orientation="vertical"
+    android:padding="15dp"
+    tools:context="com.lxkj.jieju.Activity.EvaluationActivity">
+    <LinearLayout
+        android:id="@+id/ll_zhanwei"
+        android:gravity="center"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <com.scwang.smartrefresh.layout.header.ClassicsHeader
+        <TextView
+            android:id="@+id/tv_zhuangtai"
+            android:text="正在后台审核，请耐心等待"
+            android:textSize="14sp"
+            android:textColor="@color/grey3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+   <LinearLayout
+       android:layout_marginTop="17dp"
+       android:gravity="center_vertical"
+       android:orientation="horizontal"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <TextView
+           android:text="姓名："
+           android:textSize="13sp"
+           android:textColor="@color/grey3"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+       <EditText
+           android:paddingLeft="9.5dp"
+           android:id="@+id/et_name"
+           android:hint="请输入您的姓名"
+           android:textColorHint="#999999"
+           android:textSize="12sp"
+           android:textColor="@color/black"
+           android:background="@drawable/biankuang11"
+           android:layout_width="match_parent"
+           android:layout_height="28dp" />
+   </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="17dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="电话："
+            android:textSize="13sp"
+            android:textColor="@color/grey3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/et_phone"
+            android:paddingLeft="9.5dp"
+            android:hint="请输入您的联系电话"
+            android:textColorHint="#999999"
+            android:textSize="12sp"
+            android:inputType="number"
+            android:maxLength="11"
+            android:textColor="@color/black"
+            android:background="@drawable/biankuang11"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </com.scwang.smartrefresh.layout.header.ClassicsHeader>
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycle"
-            android:padding="15dp"
-            android:background="@color/white"
+            android:layout_height="28dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="17dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="地址："
+            android:textSize="13sp"
+            android:textColor="@color/grey3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/et_site"
+            android:paddingLeft="9.5dp"
+            android:hint="请输入您的地址"
+            android:textColorHint="#999999"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:background="@drawable/biankuang11"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </android.support.v7.widget.RecyclerView>
-    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+            android:layout_height="28dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="17dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="申请代理市："
+            android:textSize="13sp"
+            android:textColor="@color/grey3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:id="@+id/ll_site"
+            android:background="@drawable/biankuang11"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="28dp">
+            <TextView
+                android:id="@+id/tv_site"
+                android:paddingLeft="9.5dp"
+                android:textColorHint="#999999"
+                android:textSize="12sp"
+                android:hint="请选择地址"
+                android:textColor="@color/black"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_marginRight="13dp"
+                android:src="@mipmap/xiala"
+                android:layout_width="9dp"
+                android:layout_height="6dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_marginTop="68dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+       <ImageView
+           android:src="@mipmap/xuanzhong"
+           android:layout_width="11dp"
+           android:layout_height="11dp" />
+        <TextView
+            android:text="我已仔细阅读并同意"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/red_them"
+            android:textSize="12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_login"
+        android:layout_width="287dp"
+        android:layout_height="44dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/biankuang3"
+        android:gravity="center"
+        android:text="立即申请入驻"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
 
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

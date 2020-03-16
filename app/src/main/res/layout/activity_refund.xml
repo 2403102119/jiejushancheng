@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context="com.lxkj.hrhc.Activity.RefundActivity">
+    tools:context="com.lxkj.jieju.Activity.RefundActivity">
  <RelativeLayout
      android:layout_width="match_parent"
      android:layout_height="match_parent">
@@ -99,7 +99,7 @@
         android:layout_margin="15dp"
         android:layout_width="match_parent"
         android:layout_height="150dp" />
-       <com.lxkj.hrhc.View.FeedBackGridView
+       <com.lxkj.jieju.View.FeedBackGridView
            android:id="@+id/photo1"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"

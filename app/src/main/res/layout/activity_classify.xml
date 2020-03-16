@@ -6,22 +6,59 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.lxkj.hrhc.Activity.ClassifyActivity">
-    <!--以下是大小分类-->
+    android:background="@color/white"
+    tools:context="com.lxkj.jieju.Activity.ClassifyActivity">
+    <LinearLayout
+        android:id="@+id/ll_search"
+        android:background="@color/white"
+        android:layout_marginTop="32dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/im_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:src="@mipmap/fanhui" />
+        <LinearLayout
+            android:id="@+id/ll_search_box"
+            android:layout_marginLeft="13dp"
+            android:background="@drawable/sousuokuang"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:layout_height="33dp">
+            <ImageView
+                android:layout_marginLeft="20dp"
+                android:src="@mipmap/search"
+                android:layout_width="14dp"
+                android:layout_height="14dp" />
+            <EditText
+                android:id="@+id/et_search"
+                android:textSize="12sp"
+                android:layout_marginLeft="@dimen/dp_7"
+                android:hint="搜索"
+                android:singleLine="true"
+                android:imeOptions="actionSearch"
+                android:gravity="center_vertical"
+                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:weightSum="6">
-
-        <!--左侧大分类-->
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/RecyclerViewLeft"
-            android:layout_width="0dp"
-            android:background="#F6F6F6"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5" />
+        android:orientation="horizontal">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="0dp"
@@ -51,7 +88,7 @@
                     android:layout_height="match_parent">
                     <TextView
                         android:id="@+id/tv_xiaoliang"
-                        android:text="销量"
+                        android:text="尺寸"
                         android:gravity="center"
                         android:textSize="16sp"
                         android:textColor="@color/black"

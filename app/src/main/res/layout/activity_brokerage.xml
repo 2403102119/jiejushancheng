@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.lxkj.hrhc.Activity.BrokerageActivity">
+    tools:context="com.lxkj.jieju.Activity.BrokerageActivity">
     <include
         android:id="@+id/Title"
         layout="@layout/item_title"></include>

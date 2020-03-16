@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F2F2F2"
+    android:background="@color/white"
     android:orientation="vertical">
     <View
         android:id="@+id/statusbar"
@@ -16,35 +16,85 @@
     <include
         android:id="@+id/Title"
         layout="@layout/item_title"/>
+        <android.support.v4.widget.NestedScrollView
+            android:layout_below="@+id/Title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycle"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </android.support.v7.widget.RecyclerView>
+                <LinearLayout
+                    android:layout_below="@+id/recycle"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="53dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            android:layout_marginLeft="17dp"
+                            android:layout_marginRight="13dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <View
+                                android:background="@color/original_border_color"
+                                android:layout_width="4dp"
+                                android:layout_height="14dp"/>
+                            <TextView
+                                android:text="为你推荐"
+                                android:textSize="15sp"
+                                android:layout_marginLeft="@dimen/dp_7"
+                                android:textColor="#1B0900"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/item_recycle"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        </android.support.v7.widget.RecyclerView>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/ll_wu"
+                    android:visibility="visible"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/Title"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="暂无数据"
+                        android:textSize="14sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycle"
-        android:layout_below="@+id/Title"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:paddingBottom="15dp"
-        android:layout_marginBottom="53dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="10dp"
-        android:visibility="gone"
-        android:background="@color/white"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </android.support.v7.widget.RecyclerView>
-    <LinearLayout
-        android:id="@+id/ll_wu"
-        android:layout_below="@+id/Title"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
-            android:text="暂无数据"
-            android:textSize="14sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
 
     <LinearLayout
         android:gravity="center_vertical"
@@ -63,15 +113,16 @@
             android:src="@mipmap/weixuan" />
         <TextView
             android:text="全选"
-            android:layout_marginLeft="12dp"
             android:textColor="#000000"
-            android:textSize="14sp"
-            android:layout_width="wrap_content"
+            android:textSize="11sp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content" />
         <LinearLayout
-            android:gravity="center_vertical"
+            android:gravity="center_vertical|right"
             android:layout_marginLeft="12dp"
             android:orientation="vertical"
+            android:layout_marginRight="@dimen/dp_5"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content">
@@ -90,7 +141,7 @@
                     android:id="@+id/tv_sell_moeney"
                     android:text="￥0.0"
                     android:textColor="#FE2C2C"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -98,12 +149,11 @@
         <TextView
             android:id="@+id/tv_accounts"
             android:text="去结算"
-            android:layout_marginRight="15dp"
             android:textColor="@color/white"
             android:textSize="14sp"
             android:gravity="center"
-            android:background="@drawable/biankuang3"
-            android:layout_width="88dp"
-            android:layout_height="36dp" />
+            android:background="@mipmap/qujiesuan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </RelativeLayout>

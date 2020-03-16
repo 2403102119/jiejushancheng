@@ -7,7 +7,7 @@
         android:id="@+id/statusbar"
         android:layout_width="match_parent"
         android:layout_height="23dp"
-        android:background="@color/appColor"
+        android:background="@color/white"
         android:visibility="visible"/>
     <!--标题-->
 
@@ -18,7 +18,7 @@
 
        <FrameLayout
            android:id="@+id/fl_top"
-           android:background="@color/appColor"
+           android:background="@color/white"
            android:layout_width="match_parent"
            android:layout_height="wrap_content">
 
@@ -29,7 +29,7 @@
                android:layout_gravity="center_vertical"
                android:layout_marginLeft="@dimen/dp_10"
                android:padding="@dimen/dp_10"
-               android:src="@mipmap/nav_back_white"
+               android:src="@mipmap/nav_back_black"
                android:visibility="visible" />
 
            <TextView
@@ -40,7 +40,7 @@
                android:gravity="center"
                android:maxLength="8"
                android:text="首页"
-               android:textColor="@color/white"
+               android:textColor="@color/black"
                android:textSize="@dimen/sp_18"/>
 
 
@@ -76,9 +76,11 @@
 
                <ImageView
                    android:id="@+id/image1"
+                   android:src="@mipmap/shanchu"
+                   android:padding="@dimen/dp_5"
                    android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:visibility="invisible" />
+                   android:layout_height="match_parent"
+                   android:visibility="visible" />
 
            </LinearLayout>
        </FrameLayout>

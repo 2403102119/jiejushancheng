@@ -7,10 +7,11 @@
     android:layout_height="match_parent"
     android:focusableInTouchMode="true"
     android:focusable="true"
-    tools:context="com.lxkj.hrhc.Activity.OneActivity">
+    tools:context="com.lxkj.jieju.Activity.OneActivity">
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/smart"
             app:srlEnableRefresh="false"
+            android:layout_below="@+id/rl_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <com.scwang.smartrefresh.layout.header.ClassicsHeader
@@ -21,7 +22,7 @@
                 android:id="@+id/ns"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#E72D2E">
+                android:background="@color/white">
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
@@ -31,9 +32,10 @@
                         android:layout_height="wrap_content">
                         <ImageView
                             android:id="@+id/im_top"
-                            android:scaleType="fitXY"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="30dp"
                             android:layout_width="match_parent"
-                            android:layout_height="250dp" />
+                            android:layout_height="141dp" />
                     </RelativeLayout>
 
                     <android.support.v7.widget.RecyclerView
@@ -53,7 +55,7 @@
         android:id="@+id/rl_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#E72D2E">
+        android:background="@color/white">
         <FrameLayout
             android:id="@+id/fl_top"
             android:paddingTop="23dp"

@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:padding="15dp"
     android:orientation="vertical"
-    tools:context="com.lxkj.hrhc.Activity.BindingActivity">
+    tools:context="com.lxkj.jieju.Activity.BindingActivity">
     <EditText
         android:id="@+id/edit1"
         android:layout_width="match_parent"
@@ -106,6 +106,7 @@
         android:layout_marginTop="10dp"
         android:background="#E5E5E5" />
     <EditText
+        android:visibility="gone"
         android:id="@+id/et_5"
         android:layout_width="match_parent"
         android:layout_height="30dp"
@@ -119,11 +120,13 @@
         android:textSize="14sp" />
 
     <View
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="10dp"
         android:background="#E5E5E5" />
     <LinearLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="21dp"

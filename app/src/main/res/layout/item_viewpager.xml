@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="14dp"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:gravity="center"
+        android:background="@drawable/biankuang18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/ri_icon"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_figure_head"
+            app:riv_border_color="#333333"
+            app:riv_border_width="0dp"
+            app:riv_oval="true" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_state"
+        android:layout_marginTop="6dp"
+        android:textColor="#6D6C6C"
+        android:textSize="12sp"
+        android:text="国家名"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

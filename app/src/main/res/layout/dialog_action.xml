@@ -51,6 +51,7 @@
             <TextView
                 android:id="@+id/tv_context_two"
                 android:layout_marginLeft="20dp"
+                android:gravity="center"
                 android:layout_marginRight="20dp"
                 android:textColor="#111111"
                 android:textSize="14sp"

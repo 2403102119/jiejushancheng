@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_marginRight="@dimen/dp_5"
+    android:layout_marginRight="@dimen/dp_6"
     android:layout_height="wrap_content"
     android:orientation="vertical">
         <RelativeLayout
@@ -21,7 +21,7 @@
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/image1"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_170"
+                    android:layout_height="125dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
@@ -40,7 +40,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_13"
+                    android:layout_marginTop="8dp"
                     android:orientation="horizontal"
                     android:weightSum="7">
 
@@ -69,14 +69,15 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="bottom"
+                        android:layout_width="11dp"
+                        android:layout_height="11dp"
+                        android:gravity="center"
+                        android:background="@drawable/biankuang31"
                         android:layout_marginTop="@dimen/dp_1"
-                        android:text="¥ "
-                        android:textStyle="bold"
-                        android:textColor="#F03A17"
-                        android:textSize="@dimen/sp_11" />
+                        android:text="¥"
+                        android:layout_marginRight="3dp"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_8" />
 
                     <TextView
                         android:id="@+id/tv2"
@@ -85,8 +86,9 @@
                         android:gravity="center_vertical"
                         android:text="999"
                         android:textStyle="bold"
+                        android:layout_gravity="bottom"
                         android:textColor="@color/text_teem"
-                        android:textSize="@dimen/sp_14" />
+                        android:textSize="@dimen/sp_13" />
 
                     <TextView
                         android:id="@+id/tv7"

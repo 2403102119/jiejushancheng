@@ -8,7 +8,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:padding="15dp"
-    tools:context="com.lxkj.hrhc.Activity.ForgetActivity">
+    tools:context="com.lxkj.jieju.Activity.ForgetActivity">
     <EditText
         android:id="@+id/edit1"
         android:layout_width="match_parent"

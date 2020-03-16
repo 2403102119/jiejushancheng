@@ -5,11 +5,11 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.lxkj.hrhc"
+        applicationId "com.lxkj.jieju"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 3
-        versionName "1.0.2"
+        versionCode 1
+        versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true //65536
 
@@ -20,7 +20,7 @@ android {
 
 
         manifestPlaceholders = [
-                JPUSH_PKGNAME: "com.lxkj.hrhc",
+                JPUSH_PKGNAME: "com.lxkj.jieju",
                 //JPUSH_APPKEY : "47275b5acd4c682068088323", //JPush 上注册的包名对应的 Appkey.
                 JPUSH_APPKEY : "8e24a8e840ce3364c39f681f", //JPush 上注册的包名对应的 Appkey.
                 JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
@@ -32,13 +32,13 @@ android {
         release {
             keyAlias 'key0'
             keyPassword '123456'
-            storeFile file('yongjin.jks')
+            storeFile file('jieju.jks')
             storePassword '123456'
         }
         debug {
             keyAlias 'key0'
             keyPassword '123456'
-            storeFile file('yongjin.jks')
+            storeFile file('jieju.jks')
             storePassword '123456'
         }
     }
