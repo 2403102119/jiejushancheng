@@ -31,6 +31,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.awen.photo.photopick.controller.PhotoPagerConfig;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
@@ -98,7 +99,7 @@ import static com.lxkj.jieju.App.context;
 public class DeatilsActivity extends BaseActivity implements View.OnClickListener {
 
     private cn.ymex.widget.banner.Banner banner;
-    List<String> BanString = new ArrayList<>();
+    ArrayList<String> BanString = new ArrayList<>();
     private RecyclerView recycle;
     StaggeredGridLayoutManager layoutManager;
     recommendProductAdapter adapter;
@@ -329,7 +330,7 @@ public class DeatilsActivity extends BaseActivity implements View.OnClickListene
                 break;
             case R.id.bottomView1://客服
 
-                contactCustomer();
+                callPhone();
                 break;
             case R.id.ll_xuanze://选择规格
 
@@ -497,16 +498,25 @@ public class DeatilsActivity extends BaseActivity implements View.OnClickListene
 
                     @Override
                     public void onClickBanner(View view, BannerBean data, int position) {
-                        Intent intent = new Intent(mContext, ImagePreviewActivity.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putSerializable(ImagePreviewActivity.IMAGE_INFO, (Serializable) imageInfo);
-                        if (!StringUtil.isEmpty(resultBean.getProductDetail().getVideo()))
-                            bundle.putInt(ImagePreviewActivity.CURRENT_ITEM, position - 1);
-                        else
-                            bundle.putInt(ImagePreviewActivity.CURRENT_ITEM, position);
-                        intent.putExtras(bundle);
-                        mContext.startActivity(intent);
-                        ((Activity) mContext).overridePendingTransition(0, 0);
+
+                        new PhotoPagerConfig.Builder(DeatilsActivity.this)
+                                .setBigImageUrls(BanString)      //大图片url,可以是sd卡res，asset，网络图片.
+//                        .addSingleBigImageUrl(list.get(1))
+                                .setSavaImage(true)                                 //开启保存图片，默认false
+                                .setPosition(position)                                     //默认展示第2张图片
+                                .setOpenDownAnimate(false)                          //是否开启下滑关闭activity，默认开启。类似微信的图片浏览，可下滑关闭一样
+                                .build();
+
+//                        Intent intent = new Intent(mContext, ImagePreviewActivity.class);
+//                        Bundle bundle = new Bundle();
+//                        bundle.putSerializable(ImagePreviewActivity.IMAGE_INFO, (Serializable) imageInfo);
+//                        if (!StringUtil.isEmpty(resultBean.getProductDetail().getVideo()))
+//                            bundle.putInt(ImagePreviewActivity.CURRENT_ITEM, position - 1);
+//                        else
+//                            bundle.putInt(ImagePreviewActivity.CURRENT_ITEM, position);
+//                        intent.putExtras(bundle);
+//                        mContext.startActivity(intent);
+//                        ((Activity) mContext).overridePendingTransition(0, 0);
                     }
 
                 })
@@ -523,6 +533,7 @@ public class DeatilsActivity extends BaseActivity implements View.OnClickListene
         OkHttpHelper.getInstance().post_json(mContext, NetClass.BASE_URL, params, new SpotsCallBack<Detailbean>(mContext) {
             @Override
             public void onSuccess(Response response, Detailbean resultBean) {
+                phone = resultBean.getProductDetail().getPhone();
                 BanString.clear();
                 for (int i = 0; i <resultBean.getProductDetail().getProductImages().size() ; i++) {
                     BanString.add(resultBean.getProductDetail().getProductImages().get(i));
@@ -693,43 +704,6 @@ public class DeatilsActivity extends BaseActivity implements View.OnClickListene
         });
     }
 
-    //联系客服微信
-    private void contactCustomer() {
-        Map<String, String> params = new HashMap<>();
-        params.put("cmd", "contactCustomer");
-        OkHttpHelper.getInstance().post_json(mContext, NetClass.BASE_URL, params, new SpotsCallBack<weixinbean>(mContext) {
-            @Override
-            public void onSuccess(Response response, final weixinbean resultBean) {
-//                actionDialog = new ActionDialog(mContext,resultBean.getWX());
-//                actionDialog.setOnActionClickListener(new ActionDialog.OnActionClickListener() {
-//                    @Override
-//                    public void onLeftClick() {//一键复制
-//                        ClipboardManager myClipboard = (ClipboardManager) context.getSystemService(CLIPBOARD_SERVICE);
-//                        String text;
-//                        text = resultBean.getWX();
-//
-//                        ClipData myClip = ClipData.newPlainText("text", text);
-//                        myClipboard.setPrimaryClip(myClip);
-//                        Toast.makeText(context, "复制成功", Toast.LENGTH_SHORT).show();
-//                        actionDialog.dismiss();
-//                    }
-//
-//                    @Override
-//                    public void onRightClick() {//确定
-//                        actionDialog.dismiss();
-//                    }
-//                });
-//                actionDialog.show();
-                phone = resultBean.getPhone();
-                callPhone();
-            }
-
-            @Override
-            public void onError(Response response, int code, Exception e) {
-
-            }
-        });
-    }
 
     //添加购物车
     private void addCart(String productid,String skuId,String count) {
@@ -802,5 +776,10 @@ public class DeatilsActivity extends BaseActivity implements View.OnClickListene
             }
         });
     }
-
+    @Override
+    public void onStop() {
+        super.onStop();
+        // 在onStop时释放掉播放器
+        JzvdStd.resetAllVideos();
+    }
 }

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TabLayout;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -14,12 +16,18 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.lxkj.jieju.Adapter.LeftAdapter;
 import com.lxkj.jieju.Adapter.RightAdapter;
+import com.lxkj.jieju.Adapter.SizeAdapter;
+import com.lxkj.jieju.Adapter.StairAdapter;
+import com.lxkj.jieju.App;
 import com.lxkj.jieju.Base.BaseActivity;
 import com.lxkj.jieju.Bean.FirsePagebean;
 import com.lxkj.jieju.Bean.Productlistbean;
@@ -47,12 +55,14 @@ import okhttp3.Response;
 public class ClassifyActivity extends BaseActivity implements View.OnClickListener{
 
     private String childCategoryId;
-    private RecyclerView recyclerViewRight;
+    private RecyclerView recyclerViewRight,size_recycle;
     LinearLayoutManager layoutManager;
     StaggeredGridLayoutManager staggeredGridLayoutManager;
-    private LeftAdapter leftAdapter;
+    GridLayoutManager gridLayoutManager;
+    private SizeAdapter sizeAdapter;
     private RightAdapter rightAdapter;
     private List<String> stairlist = new ArrayList<>();
+    private List<String> sizelist = new ArrayList<>();
     private List<String> stairidlist = new ArrayList<>();
     private List<Productlistbean.DataListBean> secondlist = new ArrayList<>();
     private LinearLayout ll_sales,ll_price;
@@ -62,10 +72,12 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
     private SmartRefreshLayout smart;
     private int pageNoIndex = 1;
     private int totalPage = 1;
-    private String sprttype = "0";
+    private String sprttype = "0",t = "1";
     private String type = "2",position1 = "0",text = "";
     private String ID,jignxiao;
     private EditText et_search;
+    private View view_size;
+    private String size = "";
     @Override
     protected void initView(Bundle savedInstanceState) {
         setContainer(R.layout.activity_classify);
@@ -80,7 +92,11 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
         smart = findViewById(R.id.smart);
         et_search = findViewById(R.id.et_search);
         im_back = findViewById(R.id.im_back);
+        size_recycle = findViewById(R.id.size_recycle);
+        view_size = findViewById(R.id.view_size);
         baseTop.setVisibility(View.GONE);
+        size_recycle.setVisibility(View.GONE);
+        view_size.setVisibility(View.GONE);
     }
 
     @Override
@@ -95,12 +111,12 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 pageNoIndex = 1;
                 if (jignxiao.equals("1")){
-                    agentProductList(SPTool.getSessionValue(SQSP.Shi),sprttype,String.valueOf(pageNoIndex));
+                    agentProductList(SPTool.getSessionValue(SQSP.Shi),sprttype,String.valueOf(pageNoIndex),size);
                 }else {
                     if (!text.equals("")){
-                        searchProduct((SPTool.getSessionValue(SQSP.Shi)),text,sprttype,String.valueOf(pageNoIndex));
+                        searchProduct((SPTool.getSessionValue(SQSP.Shi)),text,sprttype,String.valueOf(pageNoIndex),size);
                     }else {
-                        productList(childCategoryId,sprttype,String.valueOf(pageNoIndex));
+                        productList(childCategoryId,sprttype,String.valueOf(pageNoIndex),size);
                     }
                 }
 
@@ -114,12 +130,12 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
                     pageNoIndex++;
                     Log.i(TAG, "onLoadMore: 执行上拉加载");
                     if (jignxiao.equals("1")){
-                        agentProductList(SPTool.getSessionValue(SQSP.Shi),sprttype,String.valueOf(pageNoIndex));
+                        agentProductList(SPTool.getSessionValue(SQSP.Shi),sprttype,String.valueOf(pageNoIndex),size);
                     }else {
                         if (!text.equals("")){
-                            searchProduct((SPTool.getSessionValue(SQSP.Shi)),text,sprttype,String.valueOf(pageNoIndex));
+                            searchProduct((SPTool.getSessionValue(SQSP.Shi)),text,sprttype,String.valueOf(pageNoIndex),size);
                         }else {
-                            productList(childCategoryId,sprttype,String.valueOf(pageNoIndex));
+                            productList(childCategoryId,sprttype,String.valueOf(pageNoIndex),size);
                         }
                     }
                     smart.finishLoadMore();
@@ -131,7 +147,40 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
                 }
             }
         });
+        sizelist.add("50cm");
+        sizelist.add("60cm");
+        sizelist.add("70cm");
+        sizelist.add("80cm");
+        sizelist.add("90cm");
+        sizelist.add("100cm");
+        sizelist.add("110cm");
+        sizelist.add("120cm");
 
+        gridLayoutManager = new GridLayoutManager(mContext,8);
+//        gridLayoutManager.setOrientation(GridLayoutManager.HORIZONTAL|GridLayoutManager.DEFAULT_SPAN_COUNT);
+
+        size_recycle.setLayoutManager(gridLayoutManager);
+        sizeAdapter = new SizeAdapter(mContext, sizelist);
+        size_recycle.setAdapter(sizeAdapter);
+        sizeAdapter.setOnItemClickListener(new SizeAdapter.OnItemClickListener() {
+            @Override
+            public void OnItemClickListener(int position) {
+                size_recycle.setVisibility(View.GONE);
+                view_size.setVisibility(View.GONE);
+
+                size = sizelist.get(position);
+                if (jignxiao.equals("1")){
+                    agentProductList(SPTool.getSessionValue(SQSP.Shi),sprttype,String.valueOf(pageNoIndex),size);
+                }else {
+                    if (!text.equals("")){
+                        searchProduct((SPTool.getSessionValue(SQSP.Shi)),text,sprttype,String.valueOf(pageNoIndex),size);
+                    }else {
+                        productList(childCategoryId,sprttype,String.valueOf(pageNoIndex),size);
+                    }
+                }
+
+            }
+        });
         staggeredGridLayoutManager = new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.VERTICAL);
         recyclerViewRight.setLayoutManager(staggeredGridLayoutManager);
         rightAdapter=new RightAdapter(mContext,secondlist);
@@ -172,7 +221,7 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
                         imm.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);
                     }
                     if (!TextUtils.isEmpty(et_search.getText().toString())) {
-                                searchProduct((SPTool.getSessionValue(SQSP.Shi)),et_search.getText().toString(),sprttype,String.valueOf(pageNoIndex));
+                                searchProduct((SPTool.getSessionValue(SQSP.Shi)),et_search.getText().toString(),sprttype,String.valueOf(pageNoIndex),size);
                     } else {
                         ToastFactory.getToast(mContext, "关键字不能为空").show();
                     }
@@ -199,13 +248,13 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
             jignxiao = "2";
             if (!text.equals("")){
                 et_search.setText(text);
-                searchProduct((SPTool.getSessionValue(SQSP.Shi)),text,sprttype,"1");
+                searchProduct((SPTool.getSessionValue(SQSP.Shi)),text,sprttype,"1",size);
             }else {
-                productList(childCategoryId,sprttype,"1");
+                productList(childCategoryId,sprttype,"1",size);
             }
         }else {
             jignxiao = getIntent().getStringExtra("type");
-            agentProductList(SPTool.getSessionValue(SQSP.Shi),sprttype,"1");
+            agentProductList(SPTool.getSessionValue(SQSP.Shi),sprttype,"1",size);
         }
 
     }
@@ -219,16 +268,32 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
                 tv_xiaoliang.setTextColor(getResources().getColor(R.color.red_them));
                 tv_jiage.setTextColor(getResources().getColor(R.color.black));
                 im_shang.setImageResource(R.mipmap.shang);
-                im_xia.setImageResource(R.mipmap.kong);
+                im_xia.setImageResource(R.mipmap.xia);
+
+
 
                 sprttype = "1";
+
+                if (t.equals("0")){
+                    im_shang.setImageResource(R.mipmap.shang);
+                    t = "1";
+                    size_recycle.setVisibility(View.GONE);
+                    view_size.setVisibility(View.GONE);
+                }else {
+                    im_shang.setImageResource(R.mipmap.xia);
+                    t = "0";
+
+                    size_recycle.setVisibility(View.VISIBLE);
+                    view_size.setVisibility(View.VISIBLE);
+                }
+
                 if (jignxiao.equals("1")){
-                    agentProductList(SPTool.getSessionValue(SQSP.Shi),sprttype,String.valueOf(pageNoIndex));
+                    agentProductList(SPTool.getSessionValue(SQSP.Shi),sprttype,String.valueOf(pageNoIndex),size);
                 }else {
                     if (!text.equals("")){
-                        searchProduct((SPTool.getSessionValue(SQSP.Shi)),text,sprttype,String.valueOf(pageNoIndex));
+                        searchProduct((SPTool.getSessionValue(SQSP.Shi)),text,sprttype,String.valueOf(pageNoIndex),size);
                     }else {
-                        productList(childCategoryId,sprttype,String.valueOf(pageNoIndex));
+                        productList(childCategoryId,sprttype,String.valueOf(pageNoIndex),size);
                     }
                 }
                 break;
@@ -236,17 +301,22 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
                 tv_zonghe.setTextColor(getResources().getColor(R.color.red_them));
                 tv_xiaoliang.setTextColor(getResources().getColor(R.color.black));
                 tv_jiage.setTextColor(getResources().getColor(R.color.black));
-                im_shang.setImageResource(R.mipmap.kong);
-                im_xia.setImageResource(R.mipmap.kong);
+                im_shang.setImageResource(R.mipmap.shang);
+                im_xia.setImageResource(R.mipmap.xia);
+
+                size_recycle.setVisibility(View.GONE);
+                view_size.setVisibility(View.GONE);
 
                 sprttype = "0";
+
+
                 if (jignxiao.equals("1")){
-                    agentProductList(SPTool.getSessionValue(SQSP.Shi),sprttype,String.valueOf(pageNoIndex));
+                    agentProductList(SPTool.getSessionValue(SQSP.Shi),sprttype,String.valueOf(pageNoIndex),size);
                 }else {
                     if (!text.equals("")){
-                        searchProduct((SPTool.getSessionValue(SQSP.Shi)),text,sprttype,String.valueOf(pageNoIndex));
+                        searchProduct((SPTool.getSessionValue(SQSP.Shi)),text,sprttype,String.valueOf(pageNoIndex),size);
                     }else {
-                        productList(childCategoryId,sprttype,String.valueOf(pageNoIndex));
+                        productList(childCategoryId,sprttype,String.valueOf(pageNoIndex),size);
                     }
                 }
                 break;
@@ -255,7 +325,10 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
                 tv_xiaoliang.setTextColor(getResources().getColor(R.color.black));
                 tv_jiage.setTextColor(getResources().getColor(R.color.red_them));
                 im_xia.setImageResource(R.mipmap.xia);
-                im_shang.setImageResource(R.mipmap.kong);
+                im_shang.setImageResource(R.mipmap.shang);
+
+                size_recycle.setVisibility(View.GONE);
+                view_size.setVisibility(View.GONE);
 
                 if (sprttype.equals("2")){
                     type = "3";
@@ -266,12 +339,12 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
                 }
                 sprttype = type;
                 if (jignxiao.equals("1")){
-                    agentProductList(SPTool.getSessionValue(SQSP.Shi),sprttype,String.valueOf(pageNoIndex));
+                    agentProductList(SPTool.getSessionValue(SQSP.Shi),sprttype,String.valueOf(pageNoIndex),size);
                 }else {
                     if (!text.equals("")){
-                        searchProduct((SPTool.getSessionValue(SQSP.Shi)),text,sprttype,String.valueOf(pageNoIndex));
+                        searchProduct((SPTool.getSessionValue(SQSP.Shi)),text,sprttype,String.valueOf(pageNoIndex),size);
                     }else {
-                        productList(childCategoryId,sprttype,String.valueOf(pageNoIndex));
+                        productList(childCategoryId,sprttype,String.valueOf(pageNoIndex),size);
                     }
                 }
                 break;
@@ -282,13 +355,14 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
     }
 
     //根据分类id获取商品列表
-    private void productList(String childCategoryId,String sortType,String nowPage) {
+    private void productList(String childCategoryId,String sortType,String nowPage,String size) {
         Map<String, String> params = new HashMap<>();
         params.put("cmd", "productList");
         params.put("childCategoryId",childCategoryId);
         params.put("sortType",sortType);
         params.put("nowPage",nowPage);
         params.put("pageCount", SQSP.pagerSize);
+        params.put("size",size);
         OkHttpHelper.getInstance().post_json(mContext, NetClass.BASE_URL, params, new SpotsCallBack<Productlistbean>(mContext) {
             @Override
             public void onSuccess(Response response, Productlistbean resultBean) {
@@ -312,13 +386,14 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
         });
     }
     //经销商商品库
-    private void agentProductList(String city,String sortType,String nowPage) {
+    private void agentProductList(String city,String sortType,String nowPage,String size) {
         Map<String, String> params = new HashMap<>();
         params.put("cmd", "agentProductList");
         params.put("city",city);
         params.put("sortType",sortType);
         params.put("nowPage",nowPage);
         params.put("pageCount", SQSP.pagerSize);
+        params.put("size",size);
         OkHttpHelper.getInstance().post_json(mContext, NetClass.BASE_URL, params, new SpotsCallBack<Productlistbean>(mContext) {
             @Override
             public void onSuccess(Response response, Productlistbean resultBean) {
@@ -342,7 +417,7 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
         });
     }
     //搜索商品
-    private void searchProduct(String city,String keywords,String sortType,String nowPage) {
+    private void searchProduct(String city,String keywords,String sortType,String nowPage,String size) {
         Map<String, String> params = new HashMap<>();
         params.put("cmd", "searchProduct");
         params.put("city",city);
@@ -350,6 +425,7 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
         params.put("sortType",sortType);
         params.put("nowPage",nowPage);
         params.put("pageCount", SQSP.pagerSize);
+        params.put("size", size);
         OkHttpHelper.getInstance().post_json(mContext, NetClass.BASE_URL, params, new SpotsCallBack<Productlistbean>(mContext) {
             @Override
             public void onSuccess(Response response, Productlistbean resultBean) {

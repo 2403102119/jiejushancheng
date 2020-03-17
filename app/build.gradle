@@ -185,7 +185,6 @@ dependencies {
 
     implementation 'com.zyp.cardview:cardview:1.0.1'
 
-
     //自定义轮播视图
     compile 'cn.ymex:banner:1.6.7'
     //九宫格图片
@@ -193,4 +192,5 @@ dependencies {
 
     //视频播放
     compile 'com.github.xiaoyanger0825:NiceVieoPlayer:v2.2'
-}
+    compile 'com.github.Awent:PhotoPick-Master:v1.096'
+    }

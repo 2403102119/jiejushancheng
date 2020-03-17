@@ -19,6 +19,7 @@ import com.lxkj.jieju.MainActivity;
 import com.lxkj.jieju.R;
 import com.lxkj.jieju.SQSP;
 import com.lxkj.jieju.Uri.NetClass;
+import com.lxkj.jieju.Utils.MD5Util;
 import com.lxkj.jieju.Utils.MyCountDownTimer;
 import com.lxkj.jieju.Utils.SPTool;
 import com.lxkj.jieju.Utils.StringUtil_li;
@@ -33,7 +34,7 @@ public class BindingActivity extends BaseActivity implements View.OnClickListene
     private TextView tv_login,faCode,tv_agreement;
     private EditText edit1,edit2,et_3,et_4,et_5;
     private String loginType,openId,yzmcode,nickname,usericon;
-    private String contentUrl;
+    private String contentUrl,bangding = "";
     private static final String TAG = "BindingActivity";
     @Override
     protected void initView(Bundle savedInstanceState) {
@@ -84,14 +85,19 @@ public class BindingActivity extends BaseActivity implements View.OnClickListene
                     showToast("验证码不正确");
                     return;
                 }
-                Intent intent1 = new Intent(mContext,WriteActivity.class);
-                intent1.putExtra("phone",edit1.getText().toString());
-                intent1.putExtra("type","1");
-                intent1.putExtra("loginType",loginType);
-                intent1.putExtra("openId",openId);
-                intent1.putExtra("usericon",usericon);
-                intent1.putExtra("nickname",nickname);
-                startActivity(intent1);
+                if (StringUtil_li.isSpace(bangding)){
+                    Intent intent1 = new Intent(mContext,WriteActivity.class);
+                    intent1.putExtra("phone",edit1.getText().toString());
+                    intent1.putExtra("type","1");
+                    intent1.putExtra("loginType",loginType);
+                    intent1.putExtra("openId",openId);
+                    intent1.putExtra("usericon",usericon);
+                    intent1.putExtra("nickname",nickname);
+                    startActivity(intent1);
+                }else {
+                    bindPhone(loginType,openId,edit1.getText().toString());
+                }
+
                 break;
             case R.id.faCode:
                 if (StringUtil_li.isSpace(edit1.getText().toString())){
@@ -110,7 +116,38 @@ public class BindingActivity extends BaseActivity implements View.OnClickListene
     }
 
 
+    //绑定手机号
+    private void bindPhone(String loginType,String openId,String phone) {
+        Map<String, String> params = new HashMap<>();
+        params.put("cmd","bindPhone");
+        params.put("loginType", loginType);
+        params.put("openId", openId);
+        params.put("phone", phone);
+//        params.put("password", password);
+//        params.put("name", name);
+//        params.put("icon", icon);
+//        params.put("address", address);
+        params.put("token", SPTool.getSessionValue(SQSP.JupshID));
+        OkHttpHelper.getInstance().post_json(mContext, NetClass.BASE_URL, params, new SpotsCallBack<BindingBean>(mContext) {
+            @Override
+            public void onSuccess(Response response, BindingBean resultBean) {
+                showToast(resultBean.getResultNote());
+                String uid = resultBean.getUid();
+                SPTool.addSessionMap(SQSP.uid, uid);
+                SPTool.addSessionMap(SQSP.isLogin, true);
+                App.login = true;
+                Intent intent = new Intent(BindingActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
 
+            @Override
+            public void onError(Response response, int code, Exception e) {
+
+            }
+        });
+
+
+    }
     //验证手机号是否注册
     private void checkPhone(final String phone) {
         Map<String, String> params = new HashMap<>();
@@ -120,10 +157,11 @@ public class BindingActivity extends BaseActivity implements View.OnClickListene
             @Override
             public void onSuccess(Response response, Checkphonebean resultBean) {
                 if (resultBean.getExistence().equals("0")){
-                    getValidateCode(phone);
+                    bangding = "";
                 }else {
-                    showToast("手机号码已存在");
+                    bangding = "已存在";
                 }
+                getValidateCode(phone);
             }
 
             @Override

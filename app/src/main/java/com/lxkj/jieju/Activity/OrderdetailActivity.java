@@ -195,7 +195,7 @@ public class OrderdetailActivity extends BaseActivity implements View.OnClickLis
                 }else if (tv_detaile.getText().toString().equals("确认收货")){
                     shouhuodialog.show();
                 }else if (tv_detaile.getText().toString().equals("申请售后")){
-                    contactCustomer();
+                    callPhone();
                 }
                 break;
             case R.id.tv_state://去支付
@@ -228,7 +228,7 @@ public class OrderdetailActivity extends BaseActivity implements View.OnClickLis
                 }
                 break;
             case R.id.ll_lianxi://联系客服
-                contactCustomer();
+                callPhone();
                 break;
         }
     }
@@ -385,6 +385,7 @@ public class OrderdetailActivity extends BaseActivity implements View.OnClickLis
         OkHttpHelper.getInstance().post_json(mContext, NetClass.BASE_URL, params, new SpotsCallBack<Orderdetailbean>(mContext) {
             @Override
             public void onSuccess(Response response, Orderdetailbean resultBean) {
+                phone = resultBean.getOrderDetail().getPhone();
                 emsno = resultBean.getOrderDetail().getEmsno();
                 emscode = resultBean.getOrderDetail().getEmscode();
                 expCode = resultBean.getOrderDetail().getEmsname();
@@ -501,43 +502,6 @@ public class OrderdetailActivity extends BaseActivity implements View.OnClickLis
 
 
                 getFreight();
-            }
-
-            @Override
-            public void onError(Response response, int code, Exception e) {
-
-            }
-        });
-    }
-    //联系客服微信
-    private void contactCustomer() {
-        Map<String, String> params = new HashMap<>();
-        params.put("cmd", "contactCustomer");
-        OkHttpHelper.getInstance().post_json(mContext, NetClass.BASE_URL, params, new SpotsCallBack<weixinbean>(mContext) {
-            @Override
-            public void onSuccess(Response response, final weixinbean resultBean) {
-//                actionDialog = new ActionDialog(mContext,resultBean.getWX());
-//                actionDialog.setOnActionClickListener(new ActionDialog.OnActionClickListener() {
-//                    @Override
-//                    public void onLeftClick() {//一键复制
-//                        ClipboardManager myClipboard = (ClipboardManager) context.getSystemService(CLIPBOARD_SERVICE);
-//                        String text;
-//                        text = resultBean.getWX();
-//
-//                        ClipData myClip = ClipData.newPlainText("text", text);
-//                        myClipboard.setPrimaryClip(myClip);
-//                        Toast.makeText(context, "复制成功", Toast.LENGTH_SHORT).show();
-//                        actionDialog.dismiss();
-//                    }
-//
-//                    @Override
-//                    public void onRightClick() {//确定
-//                        actionDialog.dismiss();
-//                    }
-//                });
-//                actionDialog.show();
-                phone = resultBean.getPhone();
-                callPhone();
             }
 
             @Override

@@ -62,6 +62,16 @@ public class Orderdetailbean extends ResultBean {
         private String deliveryDate;
         private String status;
         private String payDate;
+
+        public String getPhone() {
+            return phone;
+        }
+
+        public void setPhone(String phone) {
+            this.phone = phone;
+        }
+
+        private String phone;
         private List<OrderItemBean> orderItem;
 
         public String getEmscode() {

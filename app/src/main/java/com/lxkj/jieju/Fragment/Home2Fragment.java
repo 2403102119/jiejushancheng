@@ -163,15 +163,19 @@ public class Home2Fragment extends BaseFragment implements View.OnClickListener{
 
 //            stairlist.add(allCategoryListBean);
             stairlist.addAll(SQSP.shouyelist);
-            secondlist.addAll(stairlist.get(0).getChildrenList());
+
+            if (stairlist.size()>0){
+                secondlist.addAll(stairlist.get(0).getChildrenList());
+                Glide.with(App.context).applyDefaultRequestOptions(new RequestOptions()
+                        .centerCrop()
+                        .error(R.mipmap.logo)
+                        .placeholder(R.mipmap.logo))
+                        .load(SQSP.shouyelist.get(0).getCategoryImage())
+                        .into(im_dingbu);
+            }
             secondAdapter.notifyDataSetChanged();
             stairAdapter.notifyDataSetChanged();
-            Glide.with(App.context).applyDefaultRequestOptions(new RequestOptions()
-                    .centerCrop()
-                    .error(R.mipmap.logo)
-                    .placeholder(R.mipmap.logo))
-                    .load(SQSP.shouyelist.get(0).getCategoryImage())
-                    .into(im_dingbu);
+
         } else if (!isVisibleToUser) {
             onPause();
         }

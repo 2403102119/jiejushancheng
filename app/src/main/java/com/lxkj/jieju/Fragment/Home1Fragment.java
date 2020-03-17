@@ -46,6 +46,7 @@ import com.lxkj.jieju.Activity.DeatilsActivity;
 import com.lxkj.jieju.Activity.MercenaryActivity;
 import com.lxkj.jieju.Activity.MessageActivity;
 import com.lxkj.jieju.Activity.OneActivity;
+import com.lxkj.jieju.Activity.ProprietaryActivity;
 import com.lxkj.jieju.Activity.SearchActivity;
 import com.lxkj.jieju.Activity.SerchActivity;
 import com.lxkj.jieju.Activity.SpecialActivity;
@@ -263,7 +264,7 @@ public class Home1Fragment extends BaseFragment implements View.OnClickListener,
 
     private void initData() {
 
-        userLogin();
+        userLogin(SPTool.getSessionValue(SQSP.Shi));
         showFirstPage(tv1.getText().toString(),"1");
 //
 //        et_seek.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -308,6 +309,7 @@ public class Home1Fragment extends BaseFragment implements View.OnClickListener,
             String cityStr = data.getStringExtra("cityStr");
             SPTool.addSessionMap(SQSP.Shi, cityStr);
             tv1.setText(cityStr);
+            userLogin(cityStr);
             showFirstPage(tv1.getText().toString(),"1");
         }
     }
@@ -385,7 +387,8 @@ public class Home1Fragment extends BaseFragment implements View.OnClickListener,
                 startActivityForResult(intent,666);
                 break;
             case R.id.ll_ziying://自营商品库
-                ((MainActivity) getActivity()).viewPager.setCurrentItem(1);
+                Intent intent7 = new Intent(getActivity(), ProprietaryActivity.class);
+                startActivity(intent7);
                 break;
             case R.id.ll_jingxiao://经销商品库
                 Intent intent3 = new Intent(getActivity(), ClassifyActivity.class);
@@ -405,9 +408,10 @@ public class Home1Fragment extends BaseFragment implements View.OnClickListener,
     }
 
     //首页初始化
-    private void userLogin() {
+    private void userLogin(String city) {
         Map<String, String> params = new HashMap<>();
         params.put("cmd", "firstPageinit");
+        params.put("city", city);
         OkHttpHelper.getInstance().post_json(getContext(), NetClass.BASE_URL, params, new SpotsCallBack<FirsePagebean>(getContext()) {
             @Override
             public void onSuccess(Response response, final FirsePagebean resultBean) {

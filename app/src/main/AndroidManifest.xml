@@ -236,7 +236,8 @@
         <activity android:name=".Activity.Withdraw_alipayActivity" />
         <activity android:name=".Activity.AlipaywinActivity" />
         <activity android:name=".Activity.Withdraw_bankActivity" />
-        <activity android:name=".Activity.EvaluationActivity"
+        <activity
+            android:name=".Activity.EvaluationActivity"
             android:launchMode="singleTop" />
         <activity android:name=".Activity.BrokerageActivity" />
         <activity android:name=".Activity.MessageActivity" />
@@ -312,7 +313,9 @@
         <activity android:name=".Activity.TwoActivity" />
         <activity android:name=".Activity.ThreeActivity" />
         <activity android:name=".Activity.ProtocolActivity" />
-        <activity android:name=".Activity.WriteActivity" />
+        <activity
+            android:name=".Activity.WriteActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
         <activity android:name=".Activity.ShortcutActivity" />
         <activity
             android:name=".Activity.CitySelectActivity"
@@ -320,7 +323,8 @@
             android:windowSoftInputMode="adjustNothing" />
         <activity android:name=".Activity.AgencyActivity" />
         <activity android:name=".Activity.AdvertisingActivity" />
-        <activity android:name=".Activity.AgencyitemActivity"></activity>
+        <activity android:name=".Activity.AgencyitemActivity" />
+        <activity android:name=".Activity.ProprietaryActivity"></activity>
     </application>
 
 </manifest>

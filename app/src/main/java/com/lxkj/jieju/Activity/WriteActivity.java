@@ -144,6 +144,7 @@ public class WriteActivity extends BaseActivity implements View.OnClickListener,
 
         initPhotoError();
         upFileUtil = new UpFileUtil(this, this);
+        mHandler.sendEmptyMessage(MSG_LOAD_DATA);
 
     }
 
@@ -167,6 +168,7 @@ public class WriteActivity extends BaseActivity implements View.OnClickListener,
             nickname = getIntent().getStringExtra("nickname");
             iconurl = usericon;
             Glide.with(App.context).applyDefaultRequestOptions(new RequestOptions()
+                    .centerCrop()
                     .error(R.mipmap.ic_figure_head)
                     .placeholder(R.mipmap.ic_figure_head))
                     .load(usericon)

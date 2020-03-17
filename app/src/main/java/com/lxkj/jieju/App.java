@@ -2,10 +2,15 @@ package com.lxkj.jieju;
 
 import android.app.Application;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.multidex.MultiDex;
 import android.util.Log;
+import android.widget.ImageView;
 
+import com.awen.photo.FrescoImageLoader;
+import com.lxkj.jieju.Utils.PicassoImageLoader;
 import com.lxkj.jieju.Utils.SPTool;
+import com.lzy.ninegrid.NineGridView;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
@@ -72,6 +77,8 @@ public class App extends Application {
 
         context = (App) getApplicationContext();
 
+        FrescoImageLoader.init(this,android.R.color.black);
+
         //极光
         JPushInterface.setDebugMode(true);
         JPushInterface.init(this);
@@ -106,6 +113,8 @@ public class App extends Application {
         PlatformConfig.setQQZone("1110053604", "0fdPth14zaeSh6hr");//
         PlatformConfig.setSinaWeibo("353419546", "a091c5a7c817086d9c7b1b5fc654810f", "https://api.weibo.com/oauth2/default.html");
 
+
+        NineGridView.setImageLoader(new PicassoImageLoader());
     }
 
     public static App getContext() {
