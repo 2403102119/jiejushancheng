@@ -99,9 +99,9 @@
             android:layout_height="match_parent">
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/im_dingbu"
-                android:src="@mipmap/pinpaiqingcang"
+                android:src="@mipmap/logo"
                 android:layout_width="match_parent"
-                android:layout_height="120dp" />
+                android:layout_height="173dp" />
             <!--右侧小分类分类-->
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/RecyclerViewRight"

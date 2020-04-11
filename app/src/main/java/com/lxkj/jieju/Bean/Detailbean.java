@@ -189,6 +189,16 @@ public class Detailbean extends ResultBean {
             private String skuName2;
             private String skuId;
 
+            public String getImage() {
+                return image;
+            }
+
+            public void setImage(String image) {
+                this.image = image;
+            }
+
+            private String image;
+
             public String getSkuName1() {
                 return skuName1;
             }

@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -121,6 +122,7 @@ public class ChoiceParameterDialog extends Dialog {
         rlCount = (RelativeLayout) view.findViewById(R.id.rl_count);
         tvConfirm = (TextView) view.findViewById(R.id.tv_confirm);
         tv_gouwuche = (TextView) view.findViewById(R.id.tv_gouwuche);
+        ivPic =  view.findViewById(R.id.iv_pic);
         tvConfirm.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -151,6 +153,17 @@ public class ChoiceParameterDialog extends Dialog {
                 }
             }
         });
+        ivPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    if (checkEnable()) {
+                        if (selectedListener != null) {
+                            selectedListener.ondatu(icon);
+                            dismiss();
+                        }
+                    }
+            }
+        });
 
         view.findViewById(R.id.iv_close).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,7 +180,7 @@ public class ChoiceParameterDialog extends Dialog {
                 return false;
             }
         });
-        ivPic =  view.findViewById(R.id.iv_pic);
+
         tvPrice = view.findViewById(R.id.tv_price);
         tvQpl =  view.findViewById(R.id.tv_qpl);
         tvTitle = view.findViewById(R.id.tv_title);
@@ -415,6 +428,12 @@ public class ChoiceParameterDialog extends Dialog {
                     skuId = skuList.get(position).getId();
                     practical = skuList.get(position).getSkuPrice();
                     spec = skuList.get(position).getSpec().toString();
+                    icon = skuList.get(position).getImage();
+                    Glide.with(context).applyDefaultRequestOptions(new RequestOptions()
+                            .error(R.mipmap.logo)
+                            .placeholder(R.mipmap.logo))
+                            .load(skuList.get(position).getImage())
+                            .into(ivPic);
                     adapter.notifyDataSetChanged();
                     checkAllChecked();
                 }
@@ -486,13 +505,14 @@ public class ChoiceParameterDialog extends Dialog {
                     enable = false;
                 }
             }
-             if (current >= selectedSku.getInventoryCount()) {
-                current = selectedSku.getInventoryCount();
-                ibAdd.setEnabled(false);
-                if (current > selectedSku.getInventoryCount()) {
-                    enable = false;
-                }
-            }
+//            Log.i("dialog", "checkEnable: "+selectedSku.getInventoryCount());
+//             if (current >= selectedSku.getInventoryCount()) {
+//                current = selectedSku.getInventoryCount();
+//                ibAdd.setEnabled(false);
+//                if (current > selectedSku.getInventoryCount()) {
+//                    enable = false;
+//                }
+//            }
             etCount.setText(String.valueOf(current));
         }
         return enable;
@@ -511,5 +531,6 @@ public class ChoiceParameterDialog extends Dialog {
 
         void onComfirm(int count, String skuid,String name,String practical,String spec);
         void ongouwuche(int count, String skuid,String name,String practical,String spec);
+        void ondatu(String icon);
     }
 }

@@ -8,7 +8,7 @@ android {
         applicationId "com.lxkj.jieju"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 1
+        versionCode 2
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true //65536
@@ -22,7 +22,7 @@ android {
         manifestPlaceholders = [
                 JPUSH_PKGNAME: "com.lxkj.jieju",
                 //JPUSH_APPKEY : "47275b5acd4c682068088323", //JPush 上注册的包名对应的 Appkey.
-                JPUSH_APPKEY : "8e24a8e840ce3364c39f681f", //JPush 上注册的包名对应的 Appkey.
+                JPUSH_APPKEY : "563e3aedf249eb7ab26871ff", //JPush 上注册的包名对应的 Appkey.
                 JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
         ]
         compileOptions {
@@ -144,7 +144,7 @@ dependencies {
     //城市选择
     implementation 'com.contrarywind:Android-PickerView:4.1.7'
     //饺子视频播放器
-    compile 'cn.jzvd:jiaozivideoplayer:7.0.4'
+    compile 'cn.jzvd:jiaozivideoplayer:7.0.5'
     compile 'com.github.addappcn:android-pickers:1.0.3'
     implementation 'com.github.paradoxie:AutoVerticalTextview:0.1'  //上下滚动的消息
     //下拉选择框
@@ -193,4 +193,5 @@ dependencies {
     //视频播放
     compile 'com.github.xiaoyanger0825:NiceVieoPlayer:v2.2'
     compile 'com.github.Awent:PhotoPick-Master:v1.096'
+
     }

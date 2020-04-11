@@ -32,6 +32,52 @@ public class FirsePagebean extends ResultBean {
     private String image3;
     private String image4;
     private String image7;
+    private String image8;
+    private String image9;
+
+    public String getImage8() {
+        return image8;
+    }
+
+    public void setImage8(String image8) {
+        this.image8 = image8;
+    }
+
+    public String getImage9() {
+        return image9;
+    }
+
+    public void setImage9(String image9) {
+        this.image9 = image9;
+    }
+
+    public String getImage10() {
+        return image10;
+    }
+
+    public void setImage10(String image10) {
+        this.image10 = image10;
+    }
+
+    public String getImage11() {
+        return image11;
+    }
+
+    public void setImage11(String image11) {
+        this.image11 = image11;
+    }
+
+    public String getImage12() {
+        return image12;
+    }
+
+    public void setImage12(String image12) {
+        this.image12 = image12;
+    }
+
+    private String image10;
+    private String image11;
+    private String image12;
     private String image1;
     private String image2;
     private List<BannerListBean> bannerList;

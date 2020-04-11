@@ -93,6 +93,16 @@ public class Param {
         private int inventoryCount;
         private String id;
 
+        public String getImage() {
+            return image;
+        }
+
+        public void setImage(String image) {
+            this.image = image;
+        }
+
+        private String image;
+
         public String getSkuPrice() {
             return skuPrice;
         }
@@ -104,11 +114,12 @@ public class Param {
         private String skuPrice;
         private List<String> spec;
 
-        public SkuBean(int inventoryCount, String skuPrice,String id, List<String> spec) {
+        public SkuBean(int inventoryCount, String skuPrice,String id, List<String> spec,String image) {
             this.inventoryCount = inventoryCount;
             this.id = id;
             this.skuPrice = skuPrice;
             this.spec = spec;
+            this.image = image;
         }
 
         public int getInventoryCount() {

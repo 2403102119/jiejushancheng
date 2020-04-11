@@ -71,7 +71,7 @@ public class App extends Application {
         super.onCreate();
 
         mContext = this;
-        SPTool.init(mContext, "洁具商城");
+        SPTool.init(mContext, "金湾浴世界");
         // 主要是添加下面这句代码
         MultiDex.install(this); //65536
 
@@ -110,7 +110,7 @@ public class App extends Application {
 
         //三方登录
         PlatformConfig.setWeixin("wxf158dcd422b1b613", "f2f1cc730dbe4a3a130bfc534d3b099b");
-        PlatformConfig.setQQZone("1110053604", "0fdPth14zaeSh6hr");//
+        PlatformConfig.setQQZone("101863549", "52263fd2bbb68065712ccdd5c6b58960");//
         PlatformConfig.setSinaWeibo("353419546", "a091c5a7c817086d9c7b1b5fc654810f", "https://api.weibo.com/oauth2/default.html");
 
 

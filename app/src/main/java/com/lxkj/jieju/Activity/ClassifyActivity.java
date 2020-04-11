@@ -111,10 +111,10 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 pageNoIndex = 1;
                 if (jignxiao.equals("1")){
-                    agentProductList(SPTool.getSessionValue(SQSP.Shi),sprttype,String.valueOf(pageNoIndex),size);
+                    agentProductList(SQSP.Shi_item,sprttype,String.valueOf(pageNoIndex),size);
                 }else {
                     if (!text.equals("")){
-                        searchProduct((SPTool.getSessionValue(SQSP.Shi)),text,sprttype,String.valueOf(pageNoIndex),size);
+                        searchProduct((SQSP.Shi_item),text,sprttype,String.valueOf(pageNoIndex),size);
                     }else {
                         productList(childCategoryId,sprttype,String.valueOf(pageNoIndex),size);
                     }
@@ -130,10 +130,10 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
                     pageNoIndex++;
                     Log.i(TAG, "onLoadMore: 执行上拉加载");
                     if (jignxiao.equals("1")){
-                        agentProductList(SPTool.getSessionValue(SQSP.Shi),sprttype,String.valueOf(pageNoIndex),size);
+                        agentProductList(SQSP.Shi_item,sprttype,String.valueOf(pageNoIndex),size);
                     }else {
                         if (!text.equals("")){
-                            searchProduct((SPTool.getSessionValue(SQSP.Shi)),text,sprttype,String.valueOf(pageNoIndex),size);
+                            searchProduct(SQSP.Shi_item,text,sprttype,String.valueOf(pageNoIndex),size);
                         }else {
                             productList(childCategoryId,sprttype,String.valueOf(pageNoIndex),size);
                         }
@@ -152,9 +152,9 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
         sizelist.add("70cm");
         sizelist.add("80cm");
         sizelist.add("90cm");
-        sizelist.add("100cm");
-        sizelist.add("110cm");
-        sizelist.add("120cm");
+        sizelist.add("1m");
+        sizelist.add("1.1m");
+        sizelist.add("1.2cm");
 
         gridLayoutManager = new GridLayoutManager(mContext,8);
 //        gridLayoutManager.setOrientation(GridLayoutManager.HORIZONTAL|GridLayoutManager.DEFAULT_SPAN_COUNT);
@@ -170,10 +170,10 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
 
                 size = sizelist.get(position);
                 if (jignxiao.equals("1")){
-                    agentProductList(SPTool.getSessionValue(SQSP.Shi),sprttype,String.valueOf(pageNoIndex),size);
+                    agentProductList(SQSP.Shi_item,sprttype,String.valueOf(pageNoIndex),size);
                 }else {
                     if (!text.equals("")){
-                        searchProduct((SPTool.getSessionValue(SQSP.Shi)),text,sprttype,String.valueOf(pageNoIndex),size);
+                        searchProduct(SQSP.Shi_item,text,sprttype,String.valueOf(pageNoIndex),size);
                     }else {
                         productList(childCategoryId,sprttype,String.valueOf(pageNoIndex),size);
                     }
@@ -221,7 +221,7 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
                         imm.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);
                     }
                     if (!TextUtils.isEmpty(et_search.getText().toString())) {
-                                searchProduct((SPTool.getSessionValue(SQSP.Shi)),et_search.getText().toString(),sprttype,String.valueOf(pageNoIndex),size);
+                                searchProduct(SQSP.Shi_item,et_search.getText().toString(),sprttype,String.valueOf(pageNoIndex),size);
                     } else {
                         ToastFactory.getToast(mContext, "关键字不能为空").show();
                     }
@@ -248,13 +248,13 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
             jignxiao = "2";
             if (!text.equals("")){
                 et_search.setText(text);
-                searchProduct((SPTool.getSessionValue(SQSP.Shi)),text,sprttype,"1",size);
+                searchProduct(SQSP.Shi_item,text,sprttype,"1",size);
             }else {
                 productList(childCategoryId,sprttype,"1",size);
             }
         }else {
             jignxiao = getIntent().getStringExtra("type");
-            agentProductList(SPTool.getSessionValue(SQSP.Shi),sprttype,"1",size);
+            agentProductList(SQSP.Shi_item,sprttype,"1",size);
         }
 
     }
@@ -288,10 +288,10 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
                 }
 
                 if (jignxiao.equals("1")){
-                    agentProductList(SPTool.getSessionValue(SQSP.Shi),sprttype,String.valueOf(pageNoIndex),size);
+                    agentProductList(SQSP.Shi_item,sprttype,String.valueOf(pageNoIndex),size);
                 }else {
                     if (!text.equals("")){
-                        searchProduct((SPTool.getSessionValue(SQSP.Shi)),text,sprttype,String.valueOf(pageNoIndex),size);
+                        searchProduct((SQSP.Shi_item),text,sprttype,String.valueOf(pageNoIndex),size);
                     }else {
                         productList(childCategoryId,sprttype,String.valueOf(pageNoIndex),size);
                     }
@@ -311,10 +311,10 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
 
 
                 if (jignxiao.equals("1")){
-                    agentProductList(SPTool.getSessionValue(SQSP.Shi),sprttype,String.valueOf(pageNoIndex),size);
+                    agentProductList(SQSP.Shi_item,sprttype,String.valueOf(pageNoIndex),size);
                 }else {
                     if (!text.equals("")){
-                        searchProduct((SPTool.getSessionValue(SQSP.Shi)),text,sprttype,String.valueOf(pageNoIndex),size);
+                        searchProduct((SQSP.Shi_item),text,sprttype,String.valueOf(pageNoIndex),size);
                     }else {
                         productList(childCategoryId,sprttype,String.valueOf(pageNoIndex),size);
                     }
@@ -339,10 +339,10 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
                 }
                 sprttype = type;
                 if (jignxiao.equals("1")){
-                    agentProductList(SPTool.getSessionValue(SQSP.Shi),sprttype,String.valueOf(pageNoIndex),size);
+                    agentProductList(SQSP.Shi_item,sprttype,String.valueOf(pageNoIndex),size);
                 }else {
                     if (!text.equals("")){
-                        searchProduct((SPTool.getSessionValue(SQSP.Shi)),text,sprttype,String.valueOf(pageNoIndex),size);
+                        searchProduct((SQSP.Shi_item),text,sprttype,String.valueOf(pageNoIndex),size);
                     }else {
                         productList(childCategoryId,sprttype,String.valueOf(pageNoIndex),size);
                     }

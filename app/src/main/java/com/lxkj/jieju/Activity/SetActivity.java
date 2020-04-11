@@ -1,9 +1,11 @@
 package com.lxkj.jieju.Activity;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
@@ -21,6 +23,7 @@ import com.hss01248.dialog.interfaces.MyDialogListener;
 import com.lxkj.jieju.Base.BaseActivity;
 import com.lxkj.jieju.Bean.AboutUsbean;
 import com.lxkj.jieju.Bean.CheckUpdateBean;
+import com.lxkj.jieju.Bean.contactCustomerBean;
 import com.lxkj.jieju.Bean.privacyBean;
 import com.lxkj.jieju.Http.BaseCallback;
 import com.lxkj.jieju.Http.OkHttpHelper;
@@ -35,9 +38,12 @@ import com.lxkj.jieju.Utils.APKVersionCodeUtils;
 import com.lxkj.jieju.Utils.ActivityManager;
 import com.lxkj.jieju.Utils.DataCleanManager;
 import com.lxkj.jieju.Utils.SPTool;
+import com.lxkj.jieju.Utils.TellUtil;
 import com.lxkj.jieju.Utils.ToastFactory;
 import com.lxkj.jieju.View.ActionDialog;
 import com.vector.update_app.utils.AppUpdateUtils;
+import com.zhy.m.permission.MPermissions;
+import com.zhy.m.permission.PermissionGrant;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -50,9 +56,9 @@ import okhttp3.Response;
 
 public class SetActivity extends BaseActivity implements View.OnClickListener{
     private static final String TAG = "SetActivity";
-    private RelativeLayout rel2,rel1,rel3,yonghu;
+    private RelativeLayout rel2,rel1,rel3,yonghu,rel4;
     private String phone;
-    private TextView tv_login,tv_huancun,banbenhao;
+    private TextView tv_login,tv_huancun,banbenhao,tv_phone;
     private LinearLayout ll_clear;
     private int numberServer;
     private int verCode;
@@ -69,8 +75,10 @@ public class SetActivity extends BaseActivity implements View.OnClickListener{
         tv_huancun = findViewById(R.id.tv_huancun);
         banbenhao = findViewById(R.id.banbenhao);
         yonghu = findViewById(R.id.yonghu);
+        rel4 = findViewById(R.id.rel4);
         banbenhao.setText(APKVersionCodeUtils.getVerName(SetActivity.this)+"");
         rel3 = findViewById(R.id.rel3);
+        tv_phone = findViewById(R.id.tv_phone);
         try {
             String totalCacheSize = DataCleanManager.getTotalCacheSize(this);
             tv_huancun.setText(totalCacheSize);
@@ -87,11 +95,13 @@ public class SetActivity extends BaseActivity implements View.OnClickListener{
         ll_clear.setOnClickListener(this);
         rel3.setOnClickListener(this);
         yonghu.setOnClickListener(this);
+        rel4.setOnClickListener(this);
     }
 
     @Override
     protected void initData() {
-        phone = getIntent().getStringExtra("phone");
+//        phone = getIntent().getStringExtra("phone");
+        contactCustomer();
     }
 
     @Override
@@ -143,6 +153,26 @@ public class SetActivity extends BaseActivity implements View.OnClickListener{
                 Intent intent2 = new Intent(SetActivity.this,ProtocolActivity.class);
                 startActivity(intent2);
                 break;
+            case R.id.rel4://联系客服
+                callPhone();
+                break;
+        }
+    }
+    @PermissionGrant(SQSP.PMS_LOCATION)
+    public void pmsLocationSuccess() {
+        //权限授权成功
+        TellUtil.tell(mContext, phone);
+    }
+    /*拨打电话*/
+    private void callPhone() {
+        if (null != phone) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                MPermissions.requestPermissions(this, SQSP.PMS_LOCATION,
+                        Manifest.permission.CALL_PHONE
+                );
+            } else {
+                pmsLocationSuccess();
+            }
         }
     }
     /*清理缓存*/
@@ -172,6 +202,24 @@ public class SetActivity extends BaseActivity implements View.OnClickListener{
                 startActivity(intent3);
                 ActivityManager.finishActivity();
                 showToast(resultBean.resultNote);
+            }
+
+            @Override
+            public void onError(Response response, int code, Exception e) {
+
+            }
+        });
+    }
+    //联系客服
+    private void contactCustomer() {
+        Map<String, String> params = new HashMap<>();
+        params.put("cmd", "contactCustomer");
+        params.put("uid",SPTool.getSessionValue(SQSP.uid));
+        OkHttpHelper.getInstance().post_json(mContext, NetClass.BASE_URL, params, new SpotsCallBack<contactCustomerBean>(mContext) {
+            @Override
+            public void onSuccess(Response response, contactCustomerBean resultBean) {
+                phone = resultBean.getPhone();
+                tv_phone.setText(resultBean.getPhone());
             }
 
             @Override

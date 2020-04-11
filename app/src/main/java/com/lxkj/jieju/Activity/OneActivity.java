@@ -83,7 +83,7 @@ public class OneActivity extends BaseActivity implements View.OnClickListener {
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
                 if (pageNoIndex < totalPage) {
                     pageNoIndex++;
-                    areaProductList(String.valueOf(pageNoIndex),position);
+                    areaProductList(String.valueOf(pageNoIndex),position,SQSP.Shi_item);
                     Log.i(TAG, "onLoadMore: 执行上拉加载");
                     smart.finishLoadMore();
                 } else {
@@ -138,12 +138,13 @@ public class OneActivity extends BaseActivity implements View.OnClickListener {
                 .into(im_top);
     }
     //专区商品列表
-    private void areaProductList(String nowPage,String position) {
+    private void areaProductList(String nowPage,String position,String city) {
         Map<String, String> params = new HashMap<>();
         params.put("cmd", "areaProductList");
         params.put("type",position);
         params.put("nowPage",nowPage);
         params.put("pageCount", SQSP.pagerSize);
+        params.put("city", city);
         OkHttpHelper.getInstance().post_json(mContext, NetClass.BASE_URL, params, new SpotsCallBack<areaProductListbean>(mContext) {
             @Override
             public void onSuccess(Response response, areaProductListbean resultBean) {
@@ -170,6 +171,6 @@ public class OneActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onResume() {
         super.onResume();
-        areaProductList("1",position);
+        areaProductList("1",position,SQSP.Shi_item );
     }
 }

@@ -17,14 +17,14 @@ public class showFirstPagebean extends ResultBean{
      * pList : [{"productid":"商品id","title":"商品名称","logo":"商品缩略图","price":"价格","sales":"11"}]
      */
 
-    private String totalPage;
+    private int totalPage;
     private List<PListBean> pList;
 
-    public String getTotalPage() {
+    public int getTotalPage() {
         return totalPage;
     }
 
-    public void setTotalPage(String totalPage) {
+    public void setTotalPage(int totalPage) {
         this.totalPage = totalPage;
     }
 

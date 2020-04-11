@@ -30,8 +30,8 @@
 
         <com.lxkj.jieju.View.RoundImageView
             android:id="@+id/iv_pic"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_marginLeft="15dp"
             android:background="@mipmap/pinpaiqingcang"
             android:scaleType="fitXY"

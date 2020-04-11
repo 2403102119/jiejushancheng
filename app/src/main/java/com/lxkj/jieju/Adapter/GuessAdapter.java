@@ -40,10 +40,10 @@ public class GuessAdapter  extends RecyclerView.Adapter<GuessAdapter.MyHolder>  
     @Override
     public void onBindViewHolder(GuessAdapter.MyHolder holder, final int position) {
         Glide.with(context).applyDefaultRequestOptions(new RequestOptions()
-                        .error(R.mipmap.ic_launcher)
-                        .placeholder(R.mipmap.ic_launcher))
-                        .load(list.get(position).getLogo())
-                        .into(holder.image1);
+                .error(R.mipmap.ic_launcher)
+                .placeholder(R.mipmap.ic_launcher))
+                .load(list.get(position).getLogo())
+                .into(holder.image1);
         holder.tv1.setText(list.get(position).getTitle());
         holder.tv2.setText(list.get(position).getPrice());
         holder.tv7.setText(list.get(position).getSales()+"人付款");

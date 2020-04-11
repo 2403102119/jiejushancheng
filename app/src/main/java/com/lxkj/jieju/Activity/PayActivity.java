@@ -33,7 +33,7 @@ import cn.beecloud.entity.BCReqParams;
 public class PayActivity extends BaseActivity implements View.OnClickListener{
     private static final String TAG = "PayActivity";
     private TextView tv_pay,tv_money;
-    private String moeny = "0.01",orderid;
+    private String moeny = "0.00",orderid;
     private ImageView wexin,alipay;
     private String type = "0";
     private String alipaytype = "2";
@@ -57,7 +57,7 @@ public class PayActivity extends BaseActivity implements View.OnClickListener{
 
     @Override
     protected void initData() {
-//        moeny = getIntent().getStringExtra("moeny");
+        moeny = getIntent().getStringExtra("moeny");
         orderid = getIntent().getStringExtra("orderid");
         tv_money.setText(moeny);
     }

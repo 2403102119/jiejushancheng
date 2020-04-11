@@ -20,7 +20,7 @@ public class SQSP {
 
 
     public static final String PayBalance = "PayBalance";//互殴转账的余额
-    public static String shareName = "欢迎使用洁具商城";//分享的文字说明
+    public static String shareName = "欢迎使用金湾浴世界";//分享的文字说明
     public static final String SEARCH = "SEARCH";//用户搜索结果
     public static final int PMS_LOCATION = 1003;// 权限编号，自定义----定位  打电话
     public static final int PMS_CAMERA = 1005;// 权限编号，自定义----相机
@@ -28,6 +28,7 @@ public class SQSP {
     public static final String JingDu = "JingDu";// 精度
     public static final String WeiDu = "WeiDu";// 纬度
     public static final String Shi = "Shi";// 郑州市
+    public static  String Shi_item = "Shi_item";// 郑州市
     public static  String user_icon = "user_icon";// 用户头像
     public static final String sosuojilu = "sousuolist";
     public static final String Beecloud_ID = "c9eb8c23-4ba7-46b8-a242-371708e3e44f";

@@ -19,6 +19,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
@@ -28,6 +29,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.amap.api.maps2d.CameraUpdateFactory;
@@ -121,7 +123,7 @@ public class Home1Fragment extends BaseFragment implements View.OnClickListener,
     private LinearLayout ll_sell,ll_ziying,ll_jingxiao;
     private LinearLayout ll_sell_item,ll_search;
     private List<FirsePagebean.CategoryListBean> stairlist = new ArrayList<>();
-    private String image1,image2,image3,image4,image5;
+    private String image1,image2,image3,image4,image5,image8,image9,image10,image11,image12;
     private SmartRefreshLayout smart;
     private int pageNoIndex = 1;
     private int totalPage = 1;
@@ -149,7 +151,15 @@ public class Home1Fragment extends BaseFragment implements View.OnClickListener,
         ll_jingxiao =  view.findViewById(R.id.ll_jingxiao);
         ll_search =  view.findViewById(R.id.ll_search);
         im_message =  view.findViewById(R.id.im_message);
-//        smart =  view.findViewById(R.id.smart);
+        smart =  view.findViewById(R.id.smart);
+
+//        WindowManager wm1 = getActivity().getWindowManager();
+//        int width1 = wm1.getDefaultDisplay().getWidth();
+//        int height1 = wm1.getDefaultDisplay().getHeight();
+//
+//        RelativeLayout.LayoutParams linearParams =(RelativeLayout.LayoutParams) banner.getLayoutParams(); //取控件textView当前的布局参数 linearParams.height = 20;// 控件的高强制设成20
+//        linearParams.height = width1/2;// 控件的宽强制设成30
+//        banner.setLayoutParams(linearParams); //使设置好的布局参数应用到控件
 
 
         String XingQu = SPTool.getSessionValue(SQSP.Shi);
@@ -167,32 +177,33 @@ public class Home1Fragment extends BaseFragment implements View.OnClickListener,
         ll_search.setOnClickListener(this);
         im_message.setOnClickListener(this);
 
+//        smart.setEnableNestedScroll(true);//是否启用嵌套滚动
 
-//        smart.setOnRefreshListener(new OnRefreshListener() {
-//            @Override
-//            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-//                pageNoIndex = 1;
-//                showFirstPage(tv1.getText().toString(),String.valueOf(pageNoIndex));
-//
-//                Log.i(TAG, "onRefresh: 执行下拉刷新方法");
-//            }
-//        });
-//        smart.setOnLoadMoreListener(new OnLoadMoreListener() {
-//            @Override
-//            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-//                if (pageNoIndex < totalPage) {
-//                    pageNoIndex++;
-//                    showFirstPage(tv1.getText().toString(),String.valueOf(pageNoIndex));
-//                    Log.i(TAG, "onLoadMore: 执行上拉加载");
-//                    smart.finishLoadMore();
-//                } else {
-//                    Log.i(TAG, "onLoadMore: 相等不可刷新");
-//                    //smartRefreshLayout.setEnableLoadMore(false);
-//                    smart.finishRefresh(2000, true);//传入false表示刷新失败
-//                    smart.finishLoadMore();
-//                }
-//            }
-//        });
+        smart.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                pageNoIndex = 1;
+                showFirstPage(tv1.getText().toString(),String.valueOf(pageNoIndex));
+
+                Log.i(TAG, "onRefresh: 执行下拉刷新方法");
+            }
+        });
+        smart.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                if (pageNoIndex < totalPage) {
+                    pageNoIndex++;
+                    showFirstPage(tv1.getText().toString(),String.valueOf(pageNoIndex));
+                    Log.i(TAG, "onLoadMore: 执行上拉加载");
+                    smart.finishLoadMore();
+                } else {
+                    Log.i(TAG, "onLoadMore: 相等不可刷新");
+                    //smartRefreshLayout.setEnableLoadMore(false);
+                    smart.finishRefresh(2000, true);//传入false表示刷新失败
+                    smart.finishLoadMore();
+                }
+            }
+        });
 
         layoutManager = new LinearLayoutManager(getActivity());
         banner_recycle.setLayoutManager(layoutManager);
@@ -210,13 +221,13 @@ public class Home1Fragment extends BaseFragment implements View.OnClickListener,
             public void OnImage(int position) {
                 if (position == 0){
                     Intent intent = new Intent(getContext(),OneActivity.class);
-                    intent.putExtra("image",list.get(position).getAreaimage());
+                    intent.putExtra("image",image11);
                     intent.putExtra("title","网红专区");
                     intent.putExtra("type","3");
                     startActivity(intent);
                 }else {
                     Intent intent = new Intent(getContext(),OneActivity.class);
-                    intent.putExtra("image",list.get(position).getAreaimage());
+                    intent.putExtra("image",image12);
                     intent.putExtra("title","淘宝热卖");
                     intent.putExtra("type","4");
                     startActivity(intent);
@@ -265,6 +276,7 @@ public class Home1Fragment extends BaseFragment implements View.OnClickListener,
     private void initData() {
 
         userLogin(SPTool.getSessionValue(SQSP.Shi));
+        SQSP.Shi_item = SPTool.getSessionValue(SQSP.Shi);
         showFirstPage(tv1.getText().toString(),"1");
 //
 //        et_seek.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -308,6 +320,7 @@ public class Home1Fragment extends BaseFragment implements View.OnClickListener,
         if (resultCode==888 && requestCode==666){
             String cityStr = data.getStringExtra("cityStr");
             SPTool.addSessionMap(SQSP.Shi, cityStr);
+            SQSP.Shi_item = cityStr;
             tv1.setText(cityStr);
             userLogin(cityStr);
             showFirstPage(tv1.getText().toString(),"1");
@@ -358,21 +371,21 @@ public class Home1Fragment extends BaseFragment implements View.OnClickListener,
         switch (v.getId()){
             case R.id.tv_mercenary://新款推荐
                 Intent intent4 = new Intent(getContext(),OneActivity.class);
-                intent4.putExtra("image",image3);
+                intent4.putExtra("image",image8);
                 intent4.putExtra("title","新款推荐");
                 intent4.putExtra("type","0");
                 startActivity(intent4);
                 break;
             case R.id.tv_warehouses://套餐系列
                 Intent intent1 = new Intent(getActivity(), OneActivity.class);
-                intent1.putExtra("image",image5);
+                intent1.putExtra("image",image10);
                 intent1.putExtra("title","套餐系列");
                 intent1.putExtra("type","2");
                 startActivity(intent1);
                 break;
             case R.id.tv_special://特价专区
                 Intent intent2 = new Intent(getActivity(), OneActivity.class);
-                intent2.putExtra("image",image4);
+                intent2.putExtra("image",image9);
                 intent2.putExtra("title","特价专区");
                 intent2.putExtra("type","1");
                 startActivity(intent2);
@@ -420,6 +433,11 @@ public class Home1Fragment extends BaseFragment implements View.OnClickListener,
                 image3 = resultBean.getImage3();
                 image4 = resultBean.getImage4();
                 image5 = resultBean.getImage5();
+                image8 = resultBean.getImage8();
+                image9 = resultBean.getImage9();
+                image10 = resultBean.getImage10();
+                image11 = resultBean.getImage11();
+                image12 = resultBean.getImage12();
 
                 Glide.with(App.context).applyDefaultRequestOptions(new RequestOptions()
                         .error(R.mipmap.logo)
@@ -511,7 +529,7 @@ public class Home1Fragment extends BaseFragment implements View.OnClickListener,
         params.put("cmd", "showFirstPage");
         params.put("city", city);
         params.put("nowPage", nowPage);
-        params.put("pageCount","4");
+        params.put("pageCount",SQSP.pagerSize);
         OkHttpHelper.getInstance().post_json(getContext(), NetClass.BASE_URL, params, new BaseCallback<showFirstPagebean>() {
             @Override
             public void onFailure(Request request, Exception e) {
@@ -525,13 +543,21 @@ public class Home1Fragment extends BaseFragment implements View.OnClickListener,
 
             @Override
             public void onSuccess(Response response, final showFirstPagebean resultBean) {
-                item_list.clear();
+
+
+                smart.finishRefresh();
+
+                totalPage = resultBean.getTotalPage();
+                if (pageNoIndex == 1) {
+                    item_list.clear();
+                }
                 item_list.addAll(resultBean.getPList());
                 guessAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onError(Response response, int code, Exception e) {
+                smart.finishRefresh();
             }
         });
     }
