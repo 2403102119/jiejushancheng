@@ -30,6 +30,7 @@ public class SQSP {
     public static final String Shi = "Shi";// 郑州市
     public static  String Shi_item = "Shi_item";// 郑州市
     public static  String user_icon = "user_icon";// 用户头像
+    public static  String 	searchProduct_type = "searchProduct_type";//类型 0首页 1自营入口 2经销商入口 3底部分类入口
     public static final String sosuojilu = "sousuolist";
     public static final String Beecloud_ID = "c9eb8c23-4ba7-46b8-a242-371708e3e44f";
     public static final String Beecloud_Secret = "3c78dabd-48ce-4af1-8c9d-0635438b78fe";

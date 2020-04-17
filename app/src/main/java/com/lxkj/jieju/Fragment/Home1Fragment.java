@@ -166,7 +166,7 @@ public class Home1Fragment extends BaseFragment implements View.OnClickListener,
         if (!TextUtils.isEmpty(XingQu)) {
             tv1.setText(XingQu);
         } else {
-            tv1.setText("郑州市");
+            tv1.setText("定位失败");
         }
         tv_mercenary.setOnClickListener(this);
         tv_warehouses.setOnClickListener(this);
@@ -400,17 +400,22 @@ public class Home1Fragment extends BaseFragment implements View.OnClickListener,
                 startActivityForResult(intent,666);
                 break;
             case R.id.ll_ziying://自营商品库
+                SQSP.searchProduct_type = "1";
                 Intent intent7 = new Intent(getActivity(), ProprietaryActivity.class);
                 startActivity(intent7);
+
                 break;
             case R.id.ll_jingxiao://经销商品库
+                SQSP.searchProduct_type = "2";
                 Intent intent3 = new Intent(getActivity(), ClassifyActivity.class);
                 intent3.putExtra("type","1");
                 startActivity(intent3);
+
                 break;
             case R.id.ll_search://搜索
                 Intent intent5 = new Intent(getActivity(), SearchActivity.class);
                 startActivity(intent5);
+                SQSP.searchProduct_type = "0";
                 break;
             case R.id.im_message:
                 Intent intent6 = new Intent(getActivity(), MessageActivity.class);

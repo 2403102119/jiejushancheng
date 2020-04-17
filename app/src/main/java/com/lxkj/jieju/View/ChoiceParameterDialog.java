@@ -27,6 +27,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.lxkj.jieju.Bean.Param;
 import com.lxkj.jieju.Bean.ParameterEntity;
 import com.lxkj.jieju.R;
+import com.lxkj.jieju.Utils.StringUtil_li;
 import com.lxkj.jieju.Utils.Utils;
 
 import java.util.ArrayList;

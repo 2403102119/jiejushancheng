@@ -660,7 +660,7 @@ public class DeatilsActivity extends BaseActivity implements View.OnClickListene
                     }
                     List<String> spec = new ArrayList<>();
                     spec.add(resultBean.getProductDetail().getSkuList().get(i).getSkuName1());
-                    if (!StringUtil.isEmpty(resultBean.getProductDetail().getSkuList().get(i).getSkuName2()))
+//                    if (!StringUtil.isEmpty(resultBean.getProductDetail().getSkuList().get(i).getSkuName2()))
                         spec.add(resultBean.getProductDetail().getSkuList().get(i).getSkuName2());
 
                     Param.SkuBean skuBean = new Param.SkuBean(resultBean.getProductDetail().getSkuList().get(i).getSkuStock(),resultBean.getProductDetail().getSkuList().get(i).getSkuPrice(),

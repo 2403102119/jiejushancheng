@@ -114,7 +114,7 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
                     agentProductList(SQSP.Shi_item,sprttype,String.valueOf(pageNoIndex),size);
                 }else {
                     if (!text.equals("")){
-                        searchProduct((SQSP.Shi_item),text,sprttype,String.valueOf(pageNoIndex),size);
+                        searchProduct((SQSP.Shi_item),text,sprttype,String.valueOf(pageNoIndex),size,SQSP.searchProduct_type);
                     }else {
                         productList(childCategoryId,sprttype,String.valueOf(pageNoIndex),size);
                     }
@@ -133,7 +133,7 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
                         agentProductList(SQSP.Shi_item,sprttype,String.valueOf(pageNoIndex),size);
                     }else {
                         if (!text.equals("")){
-                            searchProduct(SQSP.Shi_item,text,sprttype,String.valueOf(pageNoIndex),size);
+                            searchProduct(SQSP.Shi_item,text,sprttype,String.valueOf(pageNoIndex),size,SQSP.searchProduct_type);
                         }else {
                             productList(childCategoryId,sprttype,String.valueOf(pageNoIndex),size);
                         }
@@ -173,7 +173,7 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
                     agentProductList(SQSP.Shi_item,sprttype,String.valueOf(pageNoIndex),size);
                 }else {
                     if (!text.equals("")){
-                        searchProduct(SQSP.Shi_item,text,sprttype,String.valueOf(pageNoIndex),size);
+                        searchProduct(SQSP.Shi_item,text,sprttype,String.valueOf(pageNoIndex),size,SQSP.searchProduct_type);
                     }else {
                         productList(childCategoryId,sprttype,String.valueOf(pageNoIndex),size);
                     }
@@ -221,7 +221,7 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
                         imm.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);
                     }
                     if (!TextUtils.isEmpty(et_search.getText().toString())) {
-                                searchProduct(SQSP.Shi_item,et_search.getText().toString(),sprttype,String.valueOf(pageNoIndex),size);
+                                searchProduct(SQSP.Shi_item,et_search.getText().toString(),sprttype,String.valueOf(pageNoIndex),size,SQSP.searchProduct_type);
                     } else {
                         ToastFactory.getToast(mContext, "关键字不能为空").show();
                     }
@@ -248,7 +248,7 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
             jignxiao = "2";
             if (!text.equals("")){
                 et_search.setText(text);
-                searchProduct(SQSP.Shi_item,text,sprttype,"1",size);
+                searchProduct(SQSP.Shi_item,text,sprttype,"1",size,SQSP.searchProduct_type);
             }else {
                 productList(childCategoryId,sprttype,"1",size);
             }
@@ -291,7 +291,7 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
                     agentProductList(SQSP.Shi_item,sprttype,String.valueOf(pageNoIndex),size);
                 }else {
                     if (!text.equals("")){
-                        searchProduct((SQSP.Shi_item),text,sprttype,String.valueOf(pageNoIndex),size);
+                        searchProduct((SQSP.Shi_item),text,sprttype,String.valueOf(pageNoIndex),size,SQSP.searchProduct_type);
                     }else {
                         productList(childCategoryId,sprttype,String.valueOf(pageNoIndex),size);
                     }
@@ -314,7 +314,7 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
                     agentProductList(SQSP.Shi_item,sprttype,String.valueOf(pageNoIndex),size);
                 }else {
                     if (!text.equals("")){
-                        searchProduct((SQSP.Shi_item),text,sprttype,String.valueOf(pageNoIndex),size);
+                        searchProduct((SQSP.Shi_item),text,sprttype,String.valueOf(pageNoIndex),size,SQSP.searchProduct_type);
                     }else {
                         productList(childCategoryId,sprttype,String.valueOf(pageNoIndex),size);
                     }
@@ -342,7 +342,7 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
                     agentProductList(SQSP.Shi_item,sprttype,String.valueOf(pageNoIndex),size);
                 }else {
                     if (!text.equals("")){
-                        searchProduct((SQSP.Shi_item),text,sprttype,String.valueOf(pageNoIndex),size);
+                        searchProduct((SQSP.Shi_item),text,sprttype,String.valueOf(pageNoIndex),size,SQSP.searchProduct_type);
                     }else {
                         productList(childCategoryId,sprttype,String.valueOf(pageNoIndex),size);
                     }
@@ -417,7 +417,7 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
         });
     }
     //搜索商品
-    private void searchProduct(String city,String keywords,String sortType,String nowPage,String size) {
+    private void searchProduct(String city,String keywords,String sortType,String nowPage,String size,String type) {
         Map<String, String> params = new HashMap<>();
         params.put("cmd", "searchProduct");
         params.put("city",city);
@@ -426,6 +426,7 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
         params.put("nowPage",nowPage);
         params.put("pageCount", SQSP.pagerSize);
         params.put("size", size);
+        params.put("type", type);
         OkHttpHelper.getInstance().post_json(mContext, NetClass.BASE_URL, params, new SpotsCallBack<Productlistbean>(mContext) {
             @Override
             public void onSuccess(Response response, Productlistbean resultBean) {

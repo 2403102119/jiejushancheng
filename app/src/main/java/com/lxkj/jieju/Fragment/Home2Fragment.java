@@ -105,6 +105,7 @@ public class Home2Fragment extends BaseFragment implements View.OnClickListener{
         secondAdapter .setOnItemClickListener(new SecondAdapter.OnItemClickListener() {
             @Override
             public void OnItemClickListener( int position) {
+                SQSP.searchProduct_type = "3";
                 Intent intent = new Intent(getActivity(), ClassifyActivity.class);
                 intent.putExtra("childCategoryId",secondlist.get(position).getChildCategoryId());
                 startActivity(intent);

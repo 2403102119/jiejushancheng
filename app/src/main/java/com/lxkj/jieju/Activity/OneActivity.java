@@ -83,7 +83,7 @@ public class OneActivity extends BaseActivity implements View.OnClickListener {
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
                 if (pageNoIndex < totalPage) {
                     pageNoIndex++;
-                    areaProductList(String.valueOf(pageNoIndex),position,SQSP.Shi_item);
+                    areaProductList(String.valueOf(pageNoIndex),position,SPTool.getSessionValue(SQSP.Shi));
                     Log.i(TAG, "onLoadMore: 执行上拉加载");
                     smart.finishLoadMore();
                 } else {
@@ -171,6 +171,6 @@ public class OneActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onResume() {
         super.onResume();
-        areaProductList("1",position,SQSP.Shi_item );
+        areaProductList("1",position,SPTool.getSessionValue(SQSP.Shi));
     }
 }
